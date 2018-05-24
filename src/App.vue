@@ -2,18 +2,12 @@
   <div id="app">
     <img src="./assets/logo.png">
     <router-view/>
-    <p>{{ ddnice }}</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'App',
-  data() {
-    return {
-      nice: 'miece',
-    }
-  },
 }
 </script>
 
