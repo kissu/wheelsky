@@ -11,19 +11,25 @@ module.exports = {
   extends: [
     // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
     // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-    'plugin:vue/essential', 
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
-    'standard'
+    "eslint:recommended",
+    "prettier",
+    "prettier/standard",
+    "plugin:vue/recommended",
+    "plugin:vue/essential"
   ],
   // required to lint *.vue files
   plugins: [
-    'vue'
+    'vue',
+    'prettier',
   ],
   // add your custom rules here
   rules: {
     // allow async-await
     'generator-star-spacing': 'off',
+    "vue/html-self-closing": 'off',
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    // 'prettier/prettier': 'error'
   }
 }
