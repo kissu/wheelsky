@@ -1,0 +1,61 @@
+{
+  "Doux": {
+    "background": "hihi",
+    "children": {
+      "miel": [
+        "Cire d'abeille",
+        "Miel de bruyère",
+        "Miel de citronnier",
+        "Rayon de miel"
+      ],
+      "sirop": [
+        "Grenadine",
+        "Griottes au sirop",
+        "Sirop d'érable",
+        "Sirop d'orge maltée"
+      ],
+      "liqueur": [
+        "Liqueur amère",
+        "Liqueur de fruit",
+        "Liqueur de noix",
+        "Liqueur plante"
+      ],
+      "sucre": [
+        "caramel",
+        "Cassonade",
+        "Rhum",
+        "Toffee"
+      ]
+    }
+  },
+  "Floral": {
+    "background": "hihi",
+    "children": {
+      "Fleur Blanche": [
+        "Chèvre feuille",
+        "Lys",
+        "Manuka",
+        "Muguet"
+      ],
+      "Fragrance": [
+        "Lavande",
+        "Pot-pourri",
+        "Rose",
+        "Violette"
+      ],
+      "Floraison": [
+        "Vétiver",
+        "Ylang-ylang",
+        "Fleur d'oranger",
+        "Fleur de pommier",
+        "Fleur de sureau"
+      ],
+      "Officinal": [
+        "Lilas",
+        "Angélique",
+        "Aubépine",
+        "Guimauve"
+      ]
+    }
+  }
+}
