@@ -27,7 +27,8 @@ module.exports = {
   rules: {
     // allow async-await
     'generator-star-spacing': 'off',
-    "vue/html-self-closing": 'off',
+    'vue/html-self-closing': 'off',
+    'no-console': 'off',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     // 'prettier/prettier': 'error'
