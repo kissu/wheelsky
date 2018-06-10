@@ -1,79 +1,81 @@
-{
-  "level": 0,
-  "children": [
-    {
-      "level": 1,
-      "text": "Doux",
-      "wall": "",
-      "children": [
-        {
-          "level": 2,
-          "text": "Miel",
-          "wall": "",
-          "children": [
-            {
-              "level": 3,
-              "text": "Cire d'abeille",
-              "wall": "",
-              "children": []
-            },
-            {
-              "level": 3,
-              "text": "Miel de bruyere",
-              "wall": "",
-              "children": []
-            },
-            {
-              "level": 3,
-              "text": "Miel de citronnier",
-              "wall": "",
-              "children": []
-            },
-            {
-              "level": 3,
-              "text": "Rayon de miel",
-              "wall": "",
-              "children": []
-            }
-          ]
-        },
-        {
-          "level": 2,
-          "text": "Sirop",
-          "wall": "",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "Liqueur",
-          "wall": "",
-          "children": []
-        },
-        {
-          "level": 2,
-          "text": "Sucre",
-          "wall": "",
-          "children": []
-        }
-      ]
-    },
-    {
-      "level": 1,
-      "text": "Floral",
-      "wall": "",
-      "children": []
-    },
-    {
-      "level": 1,
-      "text": "Fruite",
-      "wall": "",
-      "children": []
-    },
-    {
-      "level": 1,
-      "text": "Herbace",
-      "wall": "",
-      "children": []
-    }
-  ]
-}
+[
+  {
+    "level": 0,
+    "children": [
+      {
+        "level": 1,
+        "name": "Doux",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Miel",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Cire d'abeille",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Miel de bruyere",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Miel de citronnier",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Rayon de miel",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Sirop",
+            "wall": "",
+            "children": []
+          },
+          {
+            "level": 2,
+            "name": "Liqueur",
+            "wall": "",
+            "children": []
+          },
+          {
+            "level": 2,
+            "name": "Sucre",
+            "wall": "",
+            "children": []
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Floral",
+        "wall": "",
+        "children": []
+      },
+      {
+        "level": 1,
+        "name": "Fruite",
+        "wall": "",
+        "children": []
+      },
+      {
+        "level": 1,
+        "name": "Herbace",
+        "wall": "",
+        "children": []
+      }
+    ]
+  }
+]

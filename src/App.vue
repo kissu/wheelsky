@@ -1,8 +1,9 @@
 <template lang='pug'>
   #app
     img(src='./assets/logo.png')
-    p(v-for="flavor in flavors.children" :key="flavor.id") {{ flavor }}
+    p(v-for="flavor in flavors" :key="flavor.id") {{ flavor.children }}
     button(@click="test") Click me
+    div {{ result }}
 </template>
 
 <script>
@@ -13,21 +14,22 @@ export default {
   data() {
     return {
       flavors: flavorData,
-      users: users,
+      result: '',
     }
   },
-  methods: {
-    test() {
-      console.log(this._.random(5))
-    },
-  },
+  methods: {},
 }
 
-var users = [
-  { user: 'barney', age: 36, active: true },
-  { user: 'fred', age: 40, active: false },
-  { user: 'pebbles', age: 1, active: true },
-]
+function find_nested_object(array, level, level_value, name, name_value) {
+  let result
+  array.find(function recursive_find(child) {
+    if (child[level] !== level_value || child[name].toLowerCase() !== name_value) {
+      return child.children.find(recursive_find)
+    }
+    return (result = child)
+  })
+  return result
+}
 </script>
 
 <style>
