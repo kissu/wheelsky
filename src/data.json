@@ -1,61 +1,79 @@
 {
-  "Doux": {
-    "background": "hihi",
-    "children": {
-      "miel": [
-        "Cire d'abeille",
-        "Miel de bruyère",
-        "Miel de citronnier",
-        "Rayon de miel"
-      ],
-      "sirop": [
-        "Grenadine",
-        "Griottes au sirop",
-        "Sirop d'érable",
-        "Sirop d'orge maltée"
-      ],
-      "liqueur": [
-        "Liqueur amère",
-        "Liqueur de fruit",
-        "Liqueur de noix",
-        "Liqueur plante"
-      ],
-      "sucre": [
-        "caramel",
-        "Cassonade",
-        "Rhum",
-        "Toffee"
+  "level": 0,
+  "children": [
+    {
+      "level": 1,
+      "text": "Doux",
+      "wall": "",
+      "children": [
+        {
+          "level": 2,
+          "text": "Miel",
+          "wall": "",
+          "children": [
+            {
+              "level": 3,
+              "text": "Cire d'abeille",
+              "wall": "",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "Miel de bruyere",
+              "wall": "",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "Miel de citronnier",
+              "wall": "",
+              "children": []
+            },
+            {
+              "level": 3,
+              "text": "Rayon de miel",
+              "wall": "",
+              "children": []
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "text": "Sirop",
+          "wall": "",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Liqueur",
+          "wall": "",
+          "children": []
+        },
+        {
+          "level": 2,
+          "text": "Sucre",
+          "wall": "",
+          "children": []
+        }
       ]
+    },
+    {
+      "level": 1,
+      "text": "Floral",
+      "wall": "",
+      "children": []
+    },
+    {
+      "level": 1,
+      "text": "Fruite",
+      "wall": "",
+      "children": []
+    },
+    {
+      "level": 1,
+      "text": "Herbace",
+      "wall": "",
+      "children": []
     }
-  },
-  "Floral": {
-    "background": "hihi",
-    "children": {
-      "Fleur Blanche": [
-        "Chèvre feuille",
-        "Lys",
-        "Manuka",
-        "Muguet"
-      ],
-      "Fragrance": [
-        "Lavande",
-        "Pot-pourri",
-        "Rose",
-        "Violette"
-      ],
-      "Floraison": [
-        "Vétiver",
-        "Ylang-ylang",
-        "Fleur d'oranger",
-        "Fleur de pommier",
-        "Fleur de sureau"
-      ],
-      "Officinal": [
-        "Lilas",
-        "Angélique",
-        "Aubépine",
-        "Guimauve"
-      ]
-    }
-  }
+  ]
 }
