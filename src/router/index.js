@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Wheelsky from '@/components/wheelsky'
+import Wheelsky from '@/components/Wheelsky'
 
 Vue.use(Router)
 
@@ -8,7 +8,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'yolo',
       component: Wheelsky,
     },
   ],

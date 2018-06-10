@@ -1,0 +1,94 @@
+<template lang="pug">
+  .hello
+    p(v-for="flavor in flavors.children" :key="flavor.id") {{ flavor }}
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      flavors: flavors,
+    }
+  },
+}
+
+const flavors = {
+  level: 0,
+  children: [
+    {
+      level: 1,
+      text: 'Doux',
+      wall: '',
+      children: [
+        {
+          level: 2,
+          text: 'Miel',
+          wall: '',
+          children: [
+            {
+              level: 3,
+              text: "Cire d'abeille",
+              wall: '',
+              children: [],
+            },
+            {
+              level: 3,
+              text: 'Miel de bruyere',
+              wall: '',
+              children: [],
+            },
+            {
+              level: 3,
+              text: 'Miel de citronnier',
+              wall: '',
+              children: [],
+            },
+            {
+              level: 3,
+              text: 'Rayon de miel',
+              wall: '',
+              children: [],
+            },
+          ],
+        },
+        {
+          level: 2,
+          text: 'Sirop',
+          wall: '',
+          children: [],
+        },
+        {
+          level: 2,
+          text: 'Liqueur',
+          wall: '',
+          children: [],
+        },
+        {
+          level: 2,
+          text: 'Sucre',
+          wall: '',
+          children: [],
+        },
+      ],
+    },
+    {
+      level: 1,
+      text: 'Floral',
+      wall: '',
+      children: [],
+    },
+    {
+      level: 1,
+      text: 'Fruite',
+      wall: '',
+      children: [],
+    },
+    {
+      level: 1,
+      text: 'Herbace',
+      wall: '',
+      children: [],
+    },
+  ],
+}
+</script>

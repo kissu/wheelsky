@@ -3,10 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import _ from 'vue-lodash'
 
+const options = { name: '_' }
+Vue.use(_, options)
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+/* eslint-disable */
 new Vue({
   el: '#app',
   router,
