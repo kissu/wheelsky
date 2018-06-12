@@ -2,14 +2,14 @@
   #app
     img(src='./assets/logo.png')
     p(v-for="flavor in flavors" :key="flavor.id") {{ flavor.children }}
-    button(@click="find_nested_object(level, name)") Click me
+    button(@click="") Click me
     button(@click="level-= 1") Decrement
     button(@click="level+= 1") Increment
     br
     br
     div {{ level }}
     hr
-    div {{ result }}
+    div {{ currentRing }}
 </template>
 
 <script>
@@ -20,28 +20,23 @@ export default {
   data() {
     return {
       flavors: flavorData,
-      level: 1,
-      name: '',
-      result: '',
+      level: 2,
+      name: 'Doux',
     }
   },
-  methods: {
-    //? do I need to make a computed property for that one ?
-    find_nested_object(level_value, name_value) {
-      var recursive_find = child => {
-        if (
-          child['level'] === level_value &&
-          '' !== name_value &&
-          child['name'].toLowerCase() === name_value
-        ) {
-          return (this.result = child)
-        } else if (child['level'] === level_value && level_value === 0) {
+  computed: {
+    currentRing() {
+      let recursive_find = child => {
+        if (this.level === 0) {
+          return child
+        } else if (child['name'] === 'Doux') {
           //TODO ↻ refacto the above line and the previous test into 1 line
-          return (this.result = child)
+          return child
         }
-        return child.children.find(recursive_find)
+        child.children.find(recursive_find)
       }
-      this.flavors.find(recursive_find)
+
+      return this.flavors.find(recursive_find)
     },
   },
 }
