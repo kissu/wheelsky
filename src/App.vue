@@ -21,21 +21,20 @@ export default {
     return {
       flavors: flavorData,
       level: 2,
-      name: 'Doux',
+      name: 'miel',
     }
   },
   computed: {
     currentRing() {
       let recursive_find = child => {
-        if (this.level === 0) {
-          return child
-        } else if (child['name'] === 'Doux') {
-          //TODO ↻ refacto the above line and the previous test into 1 line
-          return child
+        if (child.name !== this.name || child.level !== this.level) {
+          return child.children.find(recursive_find)
         }
-        child.children.find(recursive_find)
+        // else if (child.level !== this.level && child.name !== this.name) {
+        //   return child.children.find(recursive_find)
+        // }
+        return child
       }
-
       return this.flavors.find(recursive_find)
     },
   },
