@@ -1,21 +1,22 @@
 <template lang='pug'>
   #app
     img(src='./assets/logo.png')
-    p(v-for="flavor in flavors" :key="flavor.id") {{ flavor.children }}
+    br
     label level
     input(v-model.number="level")
+    p {{ level }}
     label name
     input(v-model="name")
+    p {{ name }}
     hr
-    div currentRing: {{ currentRing }}
-    hr
-    hr
-    div nested var: {{ nice }}
+    div All the available flavors:
+      p(v-for="flavor in currentRing") {{ flavor.name }}
+    div extract: {{ extract }}
+    div {{ test }}
 </template>
 
 <script>
 import flavorData from './data.json'
-/* eslint-disable */
 export default {
   name: 'App',
   data() {
@@ -23,28 +24,26 @@ export default {
       flavors: flavorData,
       level: 0,
       name: '',
-      nice: '',
+      result: '',
     }
   },
   computed: {
-    currentRing() {
+    currentRing: function() {
       let recursive_find = flavorElement => {
-        if (flavorElement.level === this.level) {
-          if (flavorElement.name === this.name) {
-            console.log('good name')
-            return (this.nice = flavorElement)
-          } else {
-            console.log('not the good name')
-            return
-          }
+        if (flavorElement.level === this.level && flavorElement.name === this.name) {
+          // eslint-disable-next-line
+          return (this.result = flavorElement)
         }
-        // else if (child.level !== this.level && child.name !== this.name) {
-        //   return child.children.find(recursive_find)
-        // }
-        console.log('ext return')
         return flavorElement.children.find(recursive_find)
       }
-      return this.level === 0 ? this.flavors[0].children : this.flavors.find(recursive_find)
+      // eslint-disable-next-line
+      return this.level === 0 ? (this.result = this.flavors[0]) : this.flavors.find(recursive_find)
+    },
+    extract() {
+      return this.result == '' ? this.currentRing() : this.flavors[0].children
+    },
+    test() {
+      return `${this.level} ${this.name}`
     },
   },
 }
