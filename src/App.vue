@@ -8,11 +8,10 @@
     label name
     input(v-model="name")
     p {{ name }}
+    button(@click="recursive_find") Look for the items
     hr
     div All the available flavors:
-      p(v-for="flavor in currentRing") {{ flavor.name }}
-    div extract: {{ extract }}
-    div {{ test }}
+    div {{ result }}
 </template>
 
 <script>
@@ -27,23 +26,17 @@ export default {
       result: '',
     }
   },
-  computed: {
-    currentRing: function() {
-      let recursive_find = flavorElement => {
+  methods: {
+    recursive_find() {
+      let rfind = flavorElement => {
         if (flavorElement.level === this.level && flavorElement.name === this.name) {
-          // eslint-disable-next-line
           return (this.result = flavorElement)
         }
-        return flavorElement.children.find(recursive_find)
+        return flavorElement.children.find(rfind)
       }
-      // eslint-disable-next-line
-      return this.level === 0 ? (this.result = this.flavors[0]) : this.flavors.find(recursive_find)
-    },
-    extract() {
-      return this.result == '' ? this.currentRing() : this.flavors[0].children
-    },
-    test() {
-      return `${this.level} ${this.name}`
+      return this.level === 0
+        ? (this.result = this.flavors.children)
+        : this.flavors.children.find(rfind)
     },
   },
 }
