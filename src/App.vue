@@ -11,7 +11,11 @@
     button(@click="recursive_find") Look for the items
     hr
     div All the available flavors:
-    div {{ result }}
+    div(v-for="result in results.children") {{ result.name }}
+    hr
+
+    //- g
+    //-   circle(cx="100" cy="100" r="80")
 </template>
 
 <script>
@@ -23,20 +27,18 @@ export default {
       flavors: flavorData,
       level: 0,
       name: '',
-      result: '',
+      results: '',
     }
   },
   methods: {
     recursive_find() {
       let rfind = flavorElement => {
         if (flavorElement.level === this.level && flavorElement.name === this.name) {
-          return (this.result = flavorElement)
+          return (this.results = flavorElement)
         }
         return flavorElement.children.find(rfind)
       }
-      return this.level === 0
-        ? (this.result = this.flavors.children)
-        : this.flavors.children.find(rfind)
+      return this.level === 0 ? (this.results = this.flavors) : this.flavors.children.find(rfind)
     },
   },
 }
