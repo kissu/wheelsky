@@ -1,28 +1,32 @@
 <template lang='pug'>
   #app
-    svg(:width="paths.svgSize" :height="paths.svgSize" class="wheel")
-      path(
-          :id="`path${index}`"
-          :d="paths.d"
-          :transform="transform"
-          :fill="paths.colors[index]"
-          stroke-width="2"
-          stroke="white"
-          v-for="(transform, index) in paths.transforms")
-      text(
-        :transform="transform"
-        fill="white"
-        stroke="white"
-        :xlink:href="`#path${index}`"
-        v-for="(transform, index) in paths.textTransforms")
-          tspan(dx="59") {{paths.sections[index]}}
+    svg(:width="svgSize" :height="svgSize" viewBox="0 0 420 420")
+      circle(:cx="svgSize / 2" :cy="svgSize / 2" r="210" stroke="red" fill="orange" class="wheel-middle")
+        rect(x="60" y="10" rx="10" ry="10" width="3000" height="3000" stroke="blue" fill="green" stroke-width="5")
+        //-
+          viewBox="0 0 420 420"
+          path(
+              :id="`path${index}`"
+              :d="paths.d"
+              :transform="transform"
+              :fill="paths.colors[index]"
+              stroke-width="2"
+              stroke="white"
+              v-for="(transform, index) in paths.transforms")
+          text(
+            :transform="transform"
+            fill="white"
+            class="wheel-middle"
+            :xlink:href="`#path${index}`"
+            v-for="(transform, index) in paths.textTransforms")
+              tspan(dx="50") {{paths.sections[index]}}
 </template>
 
 <script>
 import flavorData from './data.json'
-import { transform } from 'popmotion'
+// import { transform } from 'popmotion'
 import spinnable from 'popmotion-spinnable'
-const { snap } = transform
+// const { snap } = transform
 
 export default {
   name: 'App',
@@ -57,8 +61,7 @@ export default {
   },
   computed: {
     paths() {
-      const svgSize = this._data.svgSize
-      const midSvgSize = svgSize / 2
+      const midSvgSize = this.svgSize / 2
       const r = 200 //  diameter / 2
       const divisions = this.sections.length
       const degree = 360 / divisions
@@ -76,7 +79,6 @@ export default {
           translate(${midSvgSize}, ${midSvgSize})`)
       }
       return {
-        svgSize,
         d,
         transforms,
         textTransforms,
@@ -86,10 +88,9 @@ export default {
     },
   },
   mounted() {
-    const node = document.querySelector('.wheel')
+    const node = document.querySelector('.wheel-middle')
     spinnable(node, {
       onSpin: angle => console.log(angle),
-      transformSpin: snap(45),
       friction: 1,
     })
   },
@@ -146,7 +147,7 @@ export default {
 .wheelsky {
   fill: yellowgreen;
 }
-.wheel {
+.wheel-middle {
   border: 3px solid red;
 }
 </style>
