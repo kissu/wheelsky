@@ -11,11 +11,20 @@
           stroke="white"
           stroke-width="2"
         )
+        text(
+          v-for="(flavorQuarter, index) in testArray[0]"
+          :class=""
+          transform="rotate(-45 0 0) translate(0, 150)"
+          font-size="18px"
+          fill="orange"
+        ) wonderful {{ flavorQuarter }}
 
 </template>
 
 <script>
-import flavorData from './data.json'
+import flavorData from './data/whiskyFlavors.json'
+// import origin from './data/whiskyOrigin.json'
+// import flavorData from './data/whiskyType.json'
 import ZingTouch from 'zingtouch' // ♥
 export default {
   name: 'App',
@@ -24,16 +33,7 @@ export default {
       flavors: flavorData,
       level: 0,
       name: '',
-      colors: [
-        '#FFD166',
-        '#EF476F',
-        '#456990',
-        '#06D6A0',
-        '#118AB2',
-        '#073B4C',
-        '#028090',
-        '#F45B69',
-      ],
+      colors: ['#fff', '#EF476F', '#456990', '#06D6A0', '#118AB2', '#073B4C', '#028090', '#F45B69'],
       testArray: ['a', 'b', 'c', 'd', 'a1', 'b1', 'c1', 'd1'],
     }
   },
@@ -49,9 +49,13 @@ export default {
     var currentAngle = 0
 
     region.bind(wheel, spinOfTheHell, function(e) {
-      var rotatable = document.querySelector('.wheel')
       currentAngle += e.detail.distanceFromLast
-      rotatable.style.transform = 'rotate(' + currentAngle + 'deg)'
+
+      wheel.style.transform = 'rotate(' + currentAngle + 'deg)'
+
+      // var textLabel = document.querySelector('.flavorLabel')
+      // textLabel.style.transform = 'rotate(' + currentAngle + 'deg)'
+
       console.log(e.detail.angle)
     })
     console.log(this.radialVelocity)
@@ -118,6 +122,9 @@ function describeArc(x, y, radius, startAngle, endAngle) {
 </script>
 
 <style>
+body {
+  background-color: #000;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
