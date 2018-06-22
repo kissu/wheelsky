@@ -3,29 +3,32 @@
     svg.wheel(:width="400" :height="400" viewBox="0 0 400 400")
       //-
         cannot use svgSize here ??!
-      circle(:cx="svgSize" :cy="svgSize" :r="svgSize" stroke="white" fill="teal" stroke-width="2")
+      circle(:cx="svgSize" :cy="svgSize" :r="svgSize" stroke="grey" fill="teal" stroke-width="2")
       //- rect(:x="400" :y="svgSize" width="10" height="3" stroke="white" fill="red" stroke-width="2")
       path(
         v-for="(flavorQuarter, index) in flavors.children"
         @click.stop="chooseFlavor(index)"
+        @dblclick="incrementCounter() && nextNestedFlavor(flavorQuarter)"
         :class="'wheelQuarters' + index"
         :index="index"
         :fill="colors[index]"
         transform="rotate(0 0 0)"
       )
 
-      // this part is REALLY garbage and should be split in 2 components and with the use of https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath
+      //todo this part is REALLY garbage and should be split in 2 components and with the use of https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath
 
       text(
         v-for="(flavorQuarter, index) in flavors.children"
         @click.stop="chooseFlavor(index)" /* this one can be omitted imo */
+        @dblclick="incrementCounter() && nextNestedFlavor(flavorQuarter)"
         :class="'wheelQuartersText' + index"
         font-size="18px"
         fill="orange"
-        :x="svgSize + 50"
+        :x="svgSize + 30"
         :y="svgSize + 5"
         text-align="center"
         transform="rotate(-45 0 0) translate(15 0)"
+        font-stretch="condensed"
       ) {{ flavorQuarter.name }}
 
       circle.backPrevious(
@@ -33,38 +36,26 @@
         :cx="svgSize"
         :cy="svgSize"
         :r="20"
-        stroke="white"
-        fill="red"
+        stroke="black"
+        fill="#44BBA4"
         stroke-width="2"
       )
 
-    label level
-    input(v-model.number="level")
-    p {{ level }}
-    label name
-    input(v-model="name")
-    p {{ name }}
-    button(@click="recursive_find") Look for the items
-    hr
-    div All the available flavors:
-    div(v-for="result in results.children") {{ result.name }}
-    hr
-
+    p(v-show="selectedFlavor") Saveur choisie: {{ selectedFlavor }}
+    p(v-show="!selectedFlavor") Veuillez SVP choisir une saveur
 </template>
 
 <script>
 import flavorData from './data/whiskyFlavors.json'
 // import origin from './data/whiskyOrigin.json'
 // import flavorData from './data/whiskyType.json'
-import ZingTouch from 'zingtouch' // ♥
+import ZingTouch from 'zingtouch' //* ♥
 export default {
   name: 'App',
   data() {
     return {
       flavors: flavorData,
-      level: 0,
-      name: '',
-      results: '',
+      flavorsSize: '',
       colors: [
         '#fff',
         '#EF476F',
@@ -86,18 +77,24 @@ export default {
       // flavors: {
       //   children: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
       // },
-      angle: 0,
       svgSize: 200,
-      // I missed some important stuff, so...I gonna make this ugly fix.......
+      //todo I missed some important stuff, so...I gonna make this ugly fix.......
       uglyOffset: [0, 0, -30, -40, -50, 0, -65, -68, -70, -72, -74, -75, -76, -76, -77],
+      level: 0,
+      name: '',
+      results: '',
+      selectedFlavor: '',
     }
   },
   computed: {
     radialVelocity() {
-      return 360 / this.flavors.children.length
+      return 360 / this.computeFlavorsSize
+    },
+    computeFlavorsSize() {
+      return this.flavors.children.length
     },
   },
-  // https://codepen.io/olufotebig/pen/YVjJpE?editors=1010
+  //* https://codepen.io/olufotebig/pen/YVjJpE?editors=1010
   mounted() {
     var wheel = document.querySelector('.wheel')
     var region = new ZingTouch.Region(wheel)
@@ -112,6 +109,7 @@ export default {
       console.log(currentAngle)
     })
     var middleBackButton = document.querySelector('.backPrevious')
+    //todo not really unbind
     region.unbind(middleBackButton)
 
     Object.values(this.flavors.children).forEach((flavor, index) =>
@@ -120,7 +118,34 @@ export default {
         .setAttribute(
           'transform',
           `rotate(${this.radialVelocity * index +
-            this.uglyOffset[this.flavors.children.length - 1]} 200 200) translate(15 0)`,
+            this.uglyOffset[this.computeFlavorsSize - 1]} 200 200) translate(15 0)`,
+        ),
+    )
+
+    Object.values(this.flavors.children).forEach((flavor, index) =>
+      document
+        .querySelector(`.wheelQuarters${index}`)
+        .setAttribute(
+          'd',
+          describeArc(
+            200,
+            200,
+            200,
+            this.radialVelocity * index,
+            this.radialVelocity * (index + 1),
+          ),
+        ),
+    )
+  },
+  updated() {
+    //! omfffffg, pls refacto this one......
+    Object.values(this.flavors.children).forEach((flavor, index) =>
+      document
+        .querySelector(`.wheelQuartersText${index}`)
+        .setAttribute(
+          'transform',
+          `rotate(${this.radialVelocity * index +
+            this.uglyOffset[this.computeFlavorsSize - 1]} 200 200) translate(15 0)`,
         ),
     )
 
@@ -141,17 +166,30 @@ export default {
   },
   methods: {
     chooseFlavor(index) {
-      // this.level += 1
+      this.selectedFlavor = this.flavors.children[index].name
     },
-    backPreviousFlavor() {},
-    recursive_find() {
+    incrementCounter() {
+      //? maybe find a better way for the deep level than '2'
+      if (this.level < 2) {
+        return (this.level += 1)
+      } else {
+        return false
+      }
+    },
+    nextNestedFlavor(currentFlavor) {
       let rfind = flavorElement => {
-        if (flavorElement.level === this.level && flavorElement.name === this.name) {
-          return (this.results = flavorElement)
+        if (flavorElement.level === this.level && flavorElement.name === currentFlavor.name) {
+          // eslint-disable-next-line
+          return (this.flavors = flavorElement)
         }
         return flavorElement.children.find(rfind)
       }
-      return this.level === 0 ? (this.results = this.flavors) : this.flavors.children.find(rfind)
+      return this.level === 0 ? (this.flavors = flavorData) : this.flavors.children.find(rfind)
+    },
+    backPreviousFlavor() {
+      this.level -= 2
+      this.nextNestedFlavor()
+      this.selectedFlavor = ''
     },
   },
 }
@@ -160,8 +198,8 @@ function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
   var angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0
 
   return {
-    x: centerX + radius * Math.cos(angleInRadians),
-    y: centerY + radius * Math.sin(angleInRadians),
+    x: Math.round(centerX + radius * Math.cos(angleInRadians)),
+    y: Math.round(centerY + radius * Math.sin(angleInRadians)),
   }
 }
 
@@ -198,9 +236,6 @@ function describeArc(x, y, radius, startAngle, endAngle) {
 <style>
 * {
   box-sizing: border-box;
-}
-body {
-  background-color: #000;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
