@@ -9,6 +9,11 @@ export default new Router({
     {
       path: '/',
       component: Wheelsky,
+      name: 'home',
+      meta: {
+        title: 'Bienvenue sur Wheelsky',
+      },
+      mode: 'history'
     },
   ],
 })

@@ -25,6 +25,13 @@ Vue.config.productionTip = true
 var VueTouch = require('vue-touch')
 Vue.use(VueTouch, { name: 'v-touch' })
 
+import Buefy from 'buefy';
+import 'buefy/lib/buefy.css';
+import vSelect from 'vue-select'
+Vue.component('v-select', vSelect)
+
+Vue.use(Buefy);
+
 new Vue({
   el: '#app',
   router,
