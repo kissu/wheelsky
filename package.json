@@ -16,6 +16,7 @@
     "vue": "^2.5.2",
     "vue-lodash": "^2.0.0",
     "vue-router": "^3.0.1",
+    "vue-touch": "^2.0.0-beta.4",
     "vue2-touch-events": "^1.0.0",
     "zingtouch": "^1.0.6"
   },

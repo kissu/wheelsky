@@ -12,7 +12,19 @@ Vue.use(_, options)
 
 Vue.config.productionTip = true
 
+// Vue.use(Vue2TouchEvents, {
+//   disableClick: true,
+//   touchClass: '',
+//   tapTolerance: 10,
+//   swipeTolerance: 30,
+//   longTapTimeInterval: 400
+// })
+
 /* eslint-disable */
+
+var VueTouch = require('vue-touch')
+Vue.use(VueTouch, { name: 'v-touch' })
+
 new Vue({
   el: '#app',
   router,

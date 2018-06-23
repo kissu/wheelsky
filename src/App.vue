@@ -5,11 +5,13 @@
         cannot use svgSize here ??!
       circle(:cx="svgSize" :cy="svgSize" :r="svgSize" stroke="grey" fill="teal" stroke-width="2")
       //- rect(:x="400" :y="svgSize" width="10" height="3" stroke="white" fill="red" stroke-width="2")
-      path(
+      v-touch(
+        tag="path"
         v-for="(flavorQuarter, index) in flavors.children"
+        :key="flavorQuarter.id"
         :name="flavorQuarter.name"
-        @click="chooseFlavor(index)"
-        @dblclick="incrementCounter() && nextNestedFlavor(flavorQuarter)"
+        @click="incrementCounter() && nextNestedFlavor(flavorQuarter)"
+        v-on:tap="pepe(flavorQuarter)"
         :class="'wheelQuarters' + index"
         :index="index"
         :fill="colors[index]"
@@ -18,11 +20,13 @@
 
       //todo this part is REALLY garbage and should be split in 2 components and with the use of https://developer.mozilla.org/en-US/docs/Web/SVG/Element/textPath
 
-      text(
+      v-touch(
+        tag="text"
         v-for="(flavorQuarter, index) in flavors.children"
+        :key="flavorQuarter.id2"
         :name="flavorQuarter.name"
-        @click="chooseFlavor(index)" /* this one can be omitted imo */
-        @dblclick="incrementCounter() && nextNestedFlavor(flavorQuarter)"
+        @click="incrementCounter() && nextNestedFlavor(flavorQuarter)"
+        v-on:tap="pepe(flavorQuarter)"
         :class="'wheelTextQuarters' + index"
         font-size="18px"
         fill="orange"
@@ -34,8 +38,10 @@
         cursor="pointer"
       ) {{ flavorQuarter.name }}
 
-      circle.reset-flavor-level(
+      v-touch.reset-flavor-level(
         @click="resetFlavorLevel"
+        v-on:tap="resetFlavorLevel"
+        tag="circle"
         :cx="svgSize"
         :cy="svgSize"
         :r="20"
@@ -154,24 +160,26 @@ export default {
       //     that.incrementCounter() && that.nextNestedFlavor(x)
       //   })
       // })
-      var bodyRegion = new ZingTouch.Region(document.body)
-      // var quarters = document.querySelector('.wheelQuarters0')
-      var tapGesture = new ZingTouch.Tap()
-      var quarters = document.querySelectorAll("[class^='wheelQuarters']")
-      quarters.forEach(x => {
-        bodyRegion.bind(x, tapGesture, e => {
-          this.incrementCounter()
-          // alert(e.target.getAttribute('name'))
-          this.nextNestedFlavor(
-            this.flavors.children.find(y => y.name == e.target.getAttribute('name')),
-          )
-          console.log(x)
-          // // bodyRegion.unbind(x)
-        })
-      })
 
-      var resetButton = document.querySelector('.reset-flavor-level')
-      bodyRegion.bind(resetButton, tapGesture, () => this.resetFlavorLevel())
+      //? fuck me
+      // var bodyRegion = new ZingTouch.Region(document.body)
+      // // var quarters = document.querySelector('.wheelQuarters0')
+      // var tapGesture = new ZingTouch.Tap()
+      // var quarters = document.querySelectorAll("[class^='wheelQuarters']")
+      // quarters.forEach(x => {
+      //   bodyRegion.bind(x, tapGesture, e => {
+      //     this.incrementCounter()
+      //     // alert(e.target.getAttribute('name'))
+      //     this.nextNestedFlavor(
+      //       this.flavors.children.find(y => y.name == e.target.getAttribute('name')),
+      //     )
+      //     console.log(x)
+      //     // // bodyRegion.unbind(x)
+      //   })
+      // })
+
+      // var resetButton = document.querySelector('.reset-flavor-level')
+      // bodyRegion.bind(resetButton, tapGesture, () => this.resetFlavorLevel())
     })
   },
   updated() {
@@ -258,6 +266,9 @@ export default {
     test() {
       alert(event)
     },
+    pepe(x) {
+      return this.incrementCounter() && (this.selectedFlavor = this.nextNestedFlavor(x))
+    },
     // bindTap(flavor) {
     //   var wheel = document.querySelector('.wheel')
     //   var quartersRegion = new ZingTouch.Region(wheel)
@@ -283,9 +294,12 @@ export default {
         return false
       }
     },
-    nextNestedFlavor(currentFlavor) {
+    nextNestedFlavor(currentFlavor, additive = 0) {
       let rfind = flavorElement => {
-        if (flavorElement.level === this.level && flavorElement.name === currentFlavor.name) {
+        if (
+          flavorElement.level + additive === this.level &&
+          flavorElement.name === currentFlavor.name
+        ) {
           // eslint-disable-next-line
           return (this.flavors = flavorElement)
         }
