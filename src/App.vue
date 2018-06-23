@@ -87,10 +87,10 @@
         v-touch.button.is-link(tag="a" v-on:tap="submitFlavor()" :v-if="level > 1") Confirmer votre choix
         br
         br
-        div(v-if="listArray.length") ~ Votre liste de saveurs ~
+        div.white-text(v-if="listArray.length") ~ Votre liste de saveurs ~
           <p> {{ listArray }} </p>
         br
-        v-touch.button.is-info(tag="a" v-if="listArray.length" v-on:tap="wheelFinished()") J'ai fini de faire ma liste
+        v-touch.button.is-info.white-text(tag="a" v-if="listArray.length" v-on:tap="wheelFinished()") J'ai fini de faire ma liste
 
       h1.thanks(v-show="allDone") Merci d'avoir participé a la dégustation, au plaisir !
 </template>
@@ -517,6 +517,9 @@ h1 {
   left: 10%;
   border-radius: 8px;
   padding: 0.5em;
+}
+.white-text {
+  color: white;
 }
 @media only screen and (min-width: 600px) {
   .input-email {
