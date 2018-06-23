@@ -7,7 +7,8 @@
       //- rect(:x="400" :y="svgSize" width="10" height="3" stroke="white" fill="red" stroke-width="2")
       path(
         v-for="(flavorQuarter, index) in flavors.children"
-        @click.stop="chooseFlavor(index)"
+        :name="flavorQuarter.name"
+        @click="chooseFlavor(index)"
         @dblclick="incrementCounter() && nextNestedFlavor(flavorQuarter)"
         :class="'wheelQuarters' + index"
         :index="index"
@@ -19,7 +20,8 @@
 
       text(
         v-for="(flavorQuarter, index) in flavors.children"
-        @click.stop="chooseFlavor(index)" /* this one can be omitted imo */
+        :name="flavorQuarter.name"
+        @click="chooseFlavor(index)" /* this one can be omitted imo */
         @dblclick="incrementCounter() && nextNestedFlavor(flavorQuarter)"
         :class="'wheelQuartersText' + index"
         font-size="18px"
@@ -29,10 +31,11 @@
         text-align="center"
         transform="rotate(-45 0 0) translate(15 0)"
         font-stretch="condensed"
+        cursor="pointer"
       ) {{ flavorQuarter.name }}
 
-      circle.backPrevious(
-        @click.stop='backPreviousFlavor'
+      circle.reset-flavor-level(
+        @click="resetFlavorLevel"
         :cx="svgSize"
         :cy="svgSize"
         :r="20"
@@ -108,9 +111,11 @@ export default {
 
       console.log(currentAngle)
     })
-    var middleBackButton = document.querySelector('.backPrevious')
-    //todo not really unbind
-    region.unbind(middleBackButton)
+    // region.bind(wheel, 'tap', e => {
+    //   console.log(e)
+    // })
+    // var quartersRegion = new ZingTouch.Region(document.body)
+    // var quarters = document.querySelectorAll("[class*='wheelQuarters']")
 
     Object.values(this.flavors.children).forEach((flavor, index) =>
       document
@@ -136,6 +141,26 @@ export default {
           ),
         ),
     )
+
+    // Object.values(this.flavors.children).forEach(x => {
+    //   var that = this
+    //   region.bind(x, 'tap', function() {
+    //     debugger
+    //     that.incrementCounter() && that.nextNestedFlavor(x)
+    //   })
+    // })
+    var bodyRegion = new ZingTouch.Region(document.body)
+    // var quarters = document.querySelectorAll("[class*='wheelQuarters']")
+    var tapGesture = new ZingTouch.Tap()
+    var quarters = document.querySelector('.wheelQuarters0')
+    bodyRegion.bind(quarters, tapGesture, () => {
+      this.incrementCounter()
+      console.log('passed')
+      this.nextNestedFlavor(this.flavors.children[0])
+    })
+
+    var resetButton = document.querySelector('.reset-flavor-level')
+    bodyRegion.bind(resetButton, tapGesture, () => this.resetFlavorLevel())
   },
   updated() {
     //! omfffffg, pls refacto this one......
@@ -163,8 +188,58 @@ export default {
           ),
         ),
     )
+
+    // var region2 = new ZingTouch.Region(document.body)
+    // // var quarters = document.querySelectorAll("[class*='wheelQuarters']")
+    // var quarters = document.querySelector('wheelQuarters0')
+    // var tapGesture = new ZingTouch.Tap()
+    // region2.bind(quarters, tapGesture, function() {
+    //   alert('nice')
+    // })
+
+    // Object.values(this.flavors.children).forEach(x => {
+    //   var that = this
+    //   region.bind(x, 'tap', function() {
+    //     debugger
+    //     that.incrementCounter() && that.nextNestedFlavor(x)
+    //   })
+    // })
+
+    // var quartersRegion = new ZingTouch.Region(document.body)
+    // var quarters = document.querySelectorAll("[class*='wheelQuarters']")
+
+    // quarters.forEach(x =>
+    //   quartersRegion.bind(
+    //     x,
+    //     'tap',
+    //     // () => this.incrementCounter() && this.nextNestedFlavor(flavor),
+    //     () => {
+    //       this.incrementCounter()
+    //       this.nextNestedFlavor(
+    //         this.flavors.children.find(x => x.name == x.children.getAttribute('name')),
+    //       )
+    //     },
+    //   ),
+    // )
   },
   methods: {
+    test() {
+      alert(event)
+    },
+    // bindTap(flavor) {
+    //   var wheel = document.querySelector('.wheel')
+    //   var quartersRegion = new ZingTouch.Region(wheel)
+    //   const quarters = document.querySelector("[class*='wheelQuarters']")
+
+    //   quartersRegion.bind(
+    //     quarters,
+    //     'tap',
+    //     // () => this.incrementCounter() && this.nextNestedFlavor(flavor),
+    //     () => {
+    //       console.log(flavor)
+    //     },
+    //   )
+    // },
     chooseFlavor(index) {
       this.selectedFlavor = this.flavors.children[index].name
     },
@@ -186,8 +261,8 @@ export default {
       }
       return this.level === 0 ? (this.flavors = flavorData) : this.flavors.children.find(rfind)
     },
-    backPreviousFlavor() {
-      this.level -= 2
+    resetFlavorLevel() {
+      this.level = 0
       this.nextNestedFlavor()
       this.selectedFlavor = ''
     },

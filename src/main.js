@@ -4,10 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import _ from 'vue-lodash'
+// import Vue2TouchEvents from 'vue2-touch-events'
 
 const options = { name: '_' }
 Vue.use(_, options)
-Vue.config.productionTip = false
+// Vue.use(Vue2TouchEvents)
+
+Vue.config.productionTip = true
 
 /* eslint-disable */
 new Vue({
