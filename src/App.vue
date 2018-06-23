@@ -135,12 +135,13 @@ export default {
       name: '',
       results: '',
       selectedFlavor: '',
+      choosenOne: '',
+
+      userEmail: '',
+      whiskyName: '',
       whiskyType: '',
       whiskyOrigin: '',
-      userEmail: '',
       whiskyDistillery: '',
-      whiskyName: '',
-      choosenOne: '',
       listArray: [],
 
       formCompleted: false,
@@ -329,6 +330,17 @@ export default {
     },
     wheelFinished() {
       ;(this.wheelDone = true), (this.allDone = true)
+      axios
+        .post('https://wheelsky33.firebaseio.com/posts.json', {
+          email: this.userEmail,
+          whiskyName: this.whiskyName,
+          whiskyType: this.whiskyType,
+          whiskyOrigin: this.whiskyOrigin,
+          whiskyDistillery: this.whiskyDistillery,
+          listArray: this.listArray,
+        })
+        .then(result => console.log(result))
+        .catch(e => console.log(e))
     },
     // bindTap(flavor) {
     //   var wheel = document.querySelector('.wheel')
@@ -377,10 +389,6 @@ export default {
       console.log(this.choosenOne)
       this.resetFlavorLevel()
       this.listArray += `${this.choosenOne} `
-      axios
-        .post('https://wheelsky33.firebaseio.com.json', this.listArray)
-        .then(result => console.log(result))
-        .catch(e => console.log(e))
     },
   },
 }
