@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import _ from 'vue-lodash'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 // import Vue2TouchEvents from 'vue2-touch-events'
 
 const options = { name: '_' }
@@ -31,6 +33,7 @@ import vSelect from 'vue-select'
 Vue.component('v-select', vSelect)
 
 Vue.use(Buefy);
+Vue.use(VueAxios, axios)
 
 new Vue({
   el: '#app',

@@ -11,10 +11,12 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "buefy": "^0.6.6",
     "popmotion": "^8.2.5",
     "popmotion-spinnable": "^2.0.1",
     "vue": "^2.5.2",
+    "vue-axios": "^2.1.1",
     "vue-lodash": "^2.0.0",
     "vue-router": "^3.0.1",
     "vue-select": "^2.4.0",

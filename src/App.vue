@@ -21,12 +21,12 @@
 
         label Quel est le type du whisky ?
         br
-        v-select(v-model="whiskyType" :options=["Blended", "Single malt", "Blended Malt Whisky", "Bourbon", "Caadian Rye Whisky", "Corn Whiskey", "Grain whisky", "Irish blended whiskey", "Pot still whiskey", "Rye whiskey", "Tennessee","Wheat whiskey"])
+        v-select(v-model="whiskyType" :options=["Blended", "Single malt", "Blended Malt Whisky", "Bourbon", "Caadian Rye Whisky", "Corn Whiskey", "Grain whisky", "Irish blended whiskey", "Pot still whiskey", "Rye whiskey", "Tennessee","Wheat whiskey"] readonly="true")
         br
 
         label Quelle est son origine ?
         br
-        v-select(v-model="whiskyOrigin" :options=["Écosse", "Japon", "Irlande", "France", "États-Unis", "Canada", "Chine", "Espagne", "Belgique", "Inde", "Pays de Galles", "Taïwan", "Suède", "Australie", "Nouvelle-Zélande", "Autre"])
+        v-select(v-model="whiskyOrigin" :options=["Écosse", "Japon", "Irlande", "France", "États-Unis", "Canada", "Chine", "Espagne", "Belgique", "Inde", "Pays de Galles", "Taïwan", "Suède", "Australie", "Nouvelle-Zélande", "Autre"] readonly="true")
 
       br
       a.button.is-link(@click="formFinished") Tout me semble bon !
@@ -83,7 +83,7 @@
         )
 
       .bottom-block(v-show="!wheelDone & !allDone")
-        p(:v-if="level == 2 && choosenOne") Saveur actuelle: {{ choosenOne }}
+        p.white-text(:v-if="level == 2 && choosenOne") Saveur actuelle: {{ choosenOne }}
         v-touch.button.is-link(tag="a" v-on:tap="submitFlavor()" :v-if="level > 1") Confirmer votre choix
         br
         br
@@ -100,6 +100,7 @@ import flavorData from './data/whiskyFlavors.json'
 // import origin from './data/whiskyOrigin.json'
 // import flavorData from './data/whiskyType.json'
 import ZingTouch from 'zingtouch' //* ♥
+import axios from 'axios'
 export default {
   name: 'App',
   data() {
@@ -376,6 +377,10 @@ export default {
       console.log(this.choosenOne)
       this.resetFlavorLevel()
       this.listArray += `${this.choosenOne} `
+      axios
+        .post('https://wheelsky33.firebaseio.com.json', this.listArray)
+        .then(result => console.log(result))
+        .catch(e => console.log(e))
     },
   },
 }
