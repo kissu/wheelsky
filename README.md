@@ -6,7 +6,7 @@ In short, the goal is to make a marvelous whisky flavours wheel, like this one. 
 ![border](https://i.imgur.com/ATZBCB1.png)
 
 ### User stories
-Hm... Need to do ? need to get back to work and make some more Vue lately...
+Hm... Need to do ? need to get back to work and make some more Vue lately... was supposed to be a PR :3
 
 ![wiggle kitty](https://media.giphy.com/media/nNxT5qXR02FOM/giphy.gif)
 
