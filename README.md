@@ -1,4 +1,4 @@
-# whilsky
+# Wheelsky
 
 ## Project setup
 ```
