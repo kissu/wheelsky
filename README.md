@@ -1,47 +1,98 @@
 # Wheelsky :beer:
 
-In short, the goal is to make a marvelous whisky flavours wheel, like this one. But, a not ugly one.
-![wheelsky](https://i.pinimg.com/originals/cb/f3/c9/cbf3c9c78540ae98ab68271ef55b4705.jpg)
+Time to clean the whole thing...
 
-![border](https://i.imgur.com/ATZBCB1.png)
+### Interesting stuff
+[`xlink:href`]([https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/xlink:href](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use#Browser_compatibility)) is deprecated but I keep it for compatibility issues
+_meh safari..._
 
-### User stories
-Hm... Need to do ? need to get back to work and make some more Vue lately...
+Very interesting topic on [SVG transformations](https://css-tricks.com/transforms-on-svg-elements).
 
-![wiggle kitty](https://media.giphy.com/media/nNxT5qXR02FOM/giphy.gif)
+### Todo
+- [ ] check if doing a negative `viewBox` may be useful or not for rotation w/ `Draggable` (aka `-40 -40 80 80`)
+- [ ] find how to multi line split `textPath`, or doing it the ugly way by some length and split of the string
+- [ ] find out how to make the text length a bit more dynamic
+- [ ] variabilize all the stuff
+- [ ] try out the GSAP rotation
+- [ ] move the whole SVG to make it half wheel-ed
+- [ ] make the stop points on each entry
 
-### v1
-- [x] make some precise user stories
-- [x] create 3 rings :ring:
-- [ ] fake scrolling effect of 5 `tastes` at once
-- [ ] nice transition effect when _scrolling_ or changing a ring, ie: from `R1 >> R2` or `R2 >> R1`
-- [ ] ofc, make it responsive :iphone: (with 2 differents UX depending of the layout, `landscape or portait`)
-- [x] save folk's choices (FBase :fire:) with a simple mail
-- [ ] v1 should at least have simple but decent UI :sparkles:
+#### Bonus features
+- [ ] find some nice themed effects, like [submit success on a form](https://codepen.io/andrewmillen/pen/MoKLob) or [beautiful form](https://codepen.io/ainalem/pen/EQXjOR)
 
-![border](https://i.imgur.com/ATZBCB1.png)
+## Backup of the actual working Codepen
 
-### v2
-- [ ] make a real and well structured svg
-- [ ] clean the code
-- [ ] use only one touch library (instead of the current mix)
-- [ ] secure the FBase DB
-- [ ] send some mails then ?
-- [ ] make the whole pretty and responsive
-- [ ] implement minor things like the double click to erase an entry, typos, remove the selected flavors
-- [ ] UI stuff ?
+```html
+<!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse -->
 
-### v3 (other app ?)
-- [ ] find a nice headless CMS (Contentful, ButterCMS, GraphCMS)
-- [ ] connect it to the Nuxt app to let buddy make his articles :book:
+<svg viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+<!--   <path d="M 500 200
+    A 250 250 0 0 1 500 500
+    L 350 350z" transform='rotate(0)'/> -->
+<!--     <path d="M 420.71067811865476 279.28932188134524
+    A 100 100 0 1 0 420.71067811865476 420.71067811865476
+    L 350 350z" fill="orange" /> -->
+<!--     <path d="M 420.71067811865476 279.28932188134524
+    A 100 100 0 1 1 420.71067811865476 420.71067811865476
+    L 350 350z" fill="grey" /> -->
+    <path d="M 420.71067811865476 279.28932188134524
+    A 100 100 0 0 1 420.71067811865476 420.71067811865476
+    L 350 350" fill="teal" />
+    <path id="my_path" d="M 420.71067811865476 420.71067811865476
+    A 100 100 0 0 0 420.71067811865476 279.28932188134524" fill="red" />
+  <!--     <path id="my_path" d="M 385 385
+    A 50 50 0 0 0 385 314" fill="red" /> -->
+<!--     <path id="my_path" d="M 420.71067811865476 279.28932188134524
+    A 100 100 0 0 0 420.71067811865476 420.71067811865476
+    L 350 350z" fill="red" /> -->
 
-### Tech to use
-- Bulma for the global design
-- Popmotion for the kinetics of the wheel and the touch support
-- Greensock ?
-- Other details can be found on the Trello
+    <text>
+      <textPath xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#my_path" text-anchor="middle" startOffset="50%">
+        <tspan x="0" dy="-5px">
+          Miel de citronnier
+        </tspan>
+      </textPath>
+    </text>
+<!--     <path d="M 420.71067811865476 420.71067811865476
+    A 100 100 0 0 1 279.28932188134524 420.71067811865476
+    L 350 350z" fill="cyan" /> -->
 
-![border](https://i.imgur.com/ATZBCB1.png)
+    <circle cx="350" cy="350" r="20" fill="lime"/>
+</svg>
 
-##### Damn...let's help this guy ! :muscle:
-![paper sucks](http://www.spirits-social-club.com/wp-content/uploads/2016/11/Degustation-Whisky-Point-Rouge_Bordeaux-Spirits-Social-Club-42-1024x768.jpg 'I hate paper...I really need a Nuxt app for that...HALP !')
+<!--
+  M ${x1} ${y1}
+  A ${rx} ${ry} 0 0 1 ${x2} ${y2}
+  L ${cx} ${cy}z`
+-->
+```
+
+```js
+//   // Convert degrees to radians
+// //   var a1 = startAngle * Math.PI / 180;
+// a1 => 2.356194490192345 = (45 + 90) * Math.PI / 180
+// //   var a2 = (startAngle + sweepAngle) * Math.PI / 180;
+// a2 => 3.9269908169872414 = (45 + 180) * Math.PI / 180
+
+// // center of the circle
+// cx => 350
+// cy => 350
+// //   // Calculate start and end coords for arc. Starts at 12 o'clock
+// rx => 100
+// ry => 100
+// //   var x1 = cx + rx * Math.sin(a1);
+// x1 => 420.71067811865476 = 350 + 100 * Math.sin(2.356194490192345)
+// //   var y1 = cy - ry * Math.cos(a1);
+// y1 => 279.28932188134524 = 350 - 100 * Math.sin(2.356194490192345)
+
+// //   var x2 = cx + rx * Math.sin(a2);
+// x2 => 279.28932188134524 = 350 + 100 * Math.sin(3.9269908169872414)
+// //   var y2 = cy - ry * Math.cos(a2);
+// y2 => 420.71067811865476 = 350 - 100 * Math.cos(3.9269908169872414)
+
+// ---
+// x1 = 385
+// y1 = 314
+// x2 = 314
+// y2 = 385
+```
