@@ -1,17 +1,16 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Wheelsky/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Wheelsky from "./components/Wheelsky.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    Wheelsky
   }
 };
 </script>
