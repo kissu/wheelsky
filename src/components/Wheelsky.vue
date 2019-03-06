@@ -7,9 +7,17 @@
     L 350 350"
         fill="teal"
       ></path>
+      <!-- M ${x1} ${y1}
+  A ${rx} ${ry} 0 0 1 ${x2} ${y2}
+      L ${cx} ${cy}z`-->
     </svg>
   </div>
 </template>
+
+<script>
+export default {};
+</script>
+
 
 <style lang="sass" scoped>
 svg
