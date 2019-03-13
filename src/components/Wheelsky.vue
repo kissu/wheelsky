@@ -25,8 +25,8 @@ export default {
       viewBoxRange: 200,
       dumbArray: ["a", "b", "c", "d", "e"],
       color: "#fa7a55",
-      startAngle: 10,
-      sweepAngle: 120
+      startAngle: 50,
+      sweepAngle: 220
     };
   },
   computed: {
@@ -40,10 +40,10 @@ export default {
       return ((this.startAngle + this.sweepAngle) * Math.PI) / 180;
     },
     xLeftCorner() {
-      return this.wheelCenter + this.arcRadius * Math.sin(this.startAngle);
+      return this.wheelCenter + this.arcRadius * Math.sin(this.startArcAngle);
     },
     yLeftCorner() {
-      return this.wheelCenter - this.arcRadius * Math.cos(this.startAngle);
+      return this.wheelCenter - this.arcRadius * Math.cos(this.startArcAngle);
     },
     xRightCorner() {
       return this.wheelCenter + this.arcRadius * Math.sin(this.finishArcAngle);
@@ -55,7 +55,7 @@ export default {
       return this.sweepAngle > 180 ? 1 : 0;
     },
     arcRadius() {
-      return this.viewBoxRange / 1.3;
+      return this.viewBoxRange / 2;
     }
   }
 };
