@@ -1,5 +1,8 @@
 # Wheelsky :beer:
 
+[Subset](https://github.com/kissu/wheelsky/blob/v0.7/src/data/whiskyFlavors.json) of useful data.
+[Initial arc path](https://codepen.io/osublake/pen/OmgMNm) inspiration.
+
 Time to clean the whole thing...
 
 ### Interesting stuff
