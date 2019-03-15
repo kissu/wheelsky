@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       viewBoxRange: 300,
-      circleSections: ["a"],
+      circleSections: ["a", "b", "c", "d", "e"],
       colors: ["#fa7a55", "#fb1", "#b000b5", "#c0ff33", "#e2071c", "#1ad1e5"]
     };
   },
@@ -47,9 +47,9 @@ export default {
       console.log(alpha, beta);
       // alpha is start angle, beta is end of the circle arc, both in degrees
       let x = `M ${this.xLeftCorner(alpha)} ${this.yLeftCorner(alpha)}
-      A ${this.arcRadius} ${this.arcRadius} 0 ${this.isSweepAngleOver180(
+      A ${this.arcRadius} ${this.arcRadius} 0 0 1 ${this.xRightCorner(
         beta
-      )} 1 ${this.xRightCorner(beta)} ${this.yRightCorner(beta)}
+      )} ${this.yRightCorner(beta)}
       L ${this.wheelCenter} ${this.wheelCenter}z`;
       console.log(x);
       return x;
@@ -59,9 +59,6 @@ export default {
     },
     finishArcAngle(angle) {
       return (angle * Math.PI) / 180;
-    },
-    isSweepAngleOver180(angle) {
-      return angle > 180 ? 1 : 0;
     },
     xLeftCorner(angle) {
       return (
