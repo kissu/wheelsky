@@ -2,23 +2,25 @@
   <div>
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      :viewBox="`0 0 ${viewBoxRange * 2} ${viewBoxRange * 2}`">
+      :viewBox="`0 0 ${viewBoxRange * 2} ${viewBoxRange * 2}`"
+    >
       <ellipse :cx="viewBoxRange" :cy="viewBoxRange" :rx="arcRadius" :ry="arcRadius" fill="#eee"></ellipse>
-        <path
-          v-for="(section, index) in circleSections" :key="section.id"
-          :id="`arc_path${index + 1}`"
-          :d="drawCirclePath(120, 180)"
-          :fill="colors[index]"
-        ></path>
-        <!-- <text>
+      <path
+        v-for="(section, index) in circleSections"
+        :key="section.id"
+        :id="`arc_path${index + 1}`"
+        :d="drawCirclePath(degrePerArc * index, degrePerArc * (index + 1))"
+        :fill="colors[index]"
+      ></path>
+      <!-- <text>
           <textPath
             xmlns:xlink="http://www.w3.org/1999/xlink"
             xlink:href="#arc_path"
             text-anchor="middle"
             startOffset="50%"
           >Dark Souls is Awesome !</textPath>
-          <!-- $$('svg path')[0].getTotalLength() -->
-        </text> -->
+      <!-- </text>-->
+      <!-- $$('svg path')[0].getTotalLength()-->
       <circle :cx="wheelCenter" :cy="wheelCenter" r="30" fill="teal"></circle>
     </svg>
   </div>
@@ -29,16 +31,25 @@ export default {
   data() {
     return {
       viewBoxRange: 300,
-      circleSections: ["a", "b", "c", "d", "e", "f"],
+      circleSections: ["a"],
       colors: ["#fa7a55", "#fb1", "#b000b5", "#c0ff33", "#e2071c", "#1ad1e5"]
     };
   },
+  mounted() {
+    if (this.circleSections.length == 1) {
+      console.log("we should GSAP lock the rotation here !");
+    } else {
+      console.log("it's ok");
+    }
+  },
   methods: {
     drawCirclePath(alpha, beta) {
-      console.log(alpha, beta)
+      console.log(alpha, beta);
       // alpha is start angle, beta is end of the circle arc, both in degrees
       let x = `M ${this.xLeftCorner(alpha)} ${this.yLeftCorner(alpha)}
-      A ${this.arcRadius} ${this.arcRadius} 0 ${this.isSweepAngleOver180(beta)} 1 ${this.xRightCorner(alpha, beta)} ${this.yRightCorner(alpha, beta)}
+      A ${this.arcRadius} ${this.arcRadius} 0 ${this.isSweepAngleOver180(
+        beta
+      )} 1 ${this.xRightCorner(beta)} ${this.yRightCorner(beta)}
       L ${this.wheelCenter} ${this.wheelCenter}z`;
       console.log(x);
       return x;
@@ -46,8 +57,8 @@ export default {
     startArcAngle(angle) {
       return (angle * Math.PI) / 180;
     },
-    finishArcAngle(start, end) {
-      return ((start + end) * Math.PI) / 180;
+    finishArcAngle(angle) {
+      return (angle * Math.PI) / 180;
     },
     isSweepAngleOver180(angle) {
       return angle > 180 ? 1 : 0;
@@ -62,16 +73,16 @@ export default {
         this.wheelCenter - this.arcRadius * Math.cos(this.startArcAngle(angle))
       );
     },
-    xRightCorner(alpha, beta) {
+    xRightCorner(endAngle) {
       return (
         this.wheelCenter +
-        this.arcRadius * Math.sin(this.finishArcAngle(alpha, beta))
+        this.arcRadius * Math.sin(this.finishArcAngle(endAngle))
       );
     },
-    yRightCorner(alpha, beta) {
+    yRightCorner(endAngle) {
       return (
         this.wheelCenter -
-        this.arcRadius * Math.cos(this.finishArcAngle(alpha, beta))
+        this.arcRadius * Math.cos(this.finishArcAngle(endAngle))
       );
     }
   },
