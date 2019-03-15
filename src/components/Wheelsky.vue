@@ -92,6 +92,14 @@ export default {
     },
     degrePerArc() {
       return 360 / this.circleSections.length;
+    },
+    offsetAngle() {
+      //? offset with GSAP ?
+      let offsetAngle = 0;
+      if (this.circleSections.length > 2) {
+        offsetAngle = this.degrePerArc / 2;
+      }
+      return offsetAngle;
     }
   }
 };
