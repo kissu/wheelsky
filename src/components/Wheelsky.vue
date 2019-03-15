@@ -32,7 +32,7 @@ export default {
     return {
       viewBoxRange: 300,
       circleSections: ["a", "b", "c", "d", "e"],
-      colors: ["#fa7a55", "#fb1", "#b000b5", "#c0ff33", "#e2071c", "#1ad1e5"]
+      colors: ["#fa7a55", "#b000b5", "#fb1", "#c0ff33", "#e2071c", "#1ad1e5"]
     };
   },
   mounted() {
