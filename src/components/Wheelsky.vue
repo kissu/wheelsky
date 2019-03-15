@@ -1,26 +1,115 @@
 <template>
   <div>
-    <svg viewBox="-500 -500 1000 1000" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      :viewBox="`0 0 ${viewBoxRange * 2} ${viewBoxRange * 2}`"
+    >
+      <ellipse :cx="viewBoxRange" :cy="viewBoxRange" :rx="arcRadius" :ry="arcRadius" fill="#eee"></ellipse>
       <path
-        d="M 420.71067811865476 279.28932188134524
-    A 100 100 0 0 1 420.71067811865476 420.71067811865476
-    L 350 350"
-        fill="teal"
+        v-for="(section, index) in circleSections"
+        :key="section.id"
+        :id="`arc_path${index + 1}`"
+        :d="drawCirclePath(degrePerArc * index, degrePerArc * (index + 1))"
+        :fill="colors[index]"
       ></path>
-      <!-- M ${x1} ${y1}
-  A ${rx} ${ry} 0 0 1 ${x2} ${y2}
-      L ${cx} ${cy}z`-->
+      <!-- <text>
+          <textPath
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xlink:href="#arc_path"
+            text-anchor="middle"
+            startOffset="50%"
+          >Dark Souls is Awesome !</textPath>
+      <!-- </text>-->
+      <!-- $$('svg path')[0].getTotalLength()-->
+      <circle :cx="wheelCenter" :cy="wheelCenter" r="30" fill="teal"></circle>
     </svg>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      viewBoxRange: 300,
+      circleSections: ["a", "b", "c", "d", "e"],
+      colors: ["#1ad1e5", "#c0ff33", "#e2071c", "#fb1", "#b000b5", "#fa7a55"]
+    };
+  },
+  mounted() {
+    if (this.circleSections.length == 1) {
+      console.log("we should GSAP lock the rotation here !");
+    } else {
+      console.log("it's ok");
+    }
+  },
+  methods: {
+    drawCirclePath(alpha, beta) {
+      console.log(alpha, beta);
+      // alpha is start angle, beta is end of the circle arc, both in degrees
+      let x = `M ${this.xLeftCorner(alpha)} ${this.yLeftCorner(alpha)}
+      A ${this.arcRadius} ${this.arcRadius} 0 0 1 ${this.xRightCorner(
+        beta
+      )} ${this.yRightCorner(beta)}
+      L ${this.wheelCenter} ${this.wheelCenter}z`;
+      console.log(x);
+      return x;
+    },
+    startArcAngle(angle) {
+      return (angle * Math.PI) / 180;
+    },
+    finishArcAngle(angle) {
+      return (angle * Math.PI) / 180;
+    },
+    xLeftCorner(angle) {
+      return (
+        this.wheelCenter + this.arcRadius * Math.sin(this.startArcAngle(angle))
+      );
+    },
+    yLeftCorner(angle) {
+      return (
+        this.wheelCenter - this.arcRadius * Math.cos(this.startArcAngle(angle))
+      );
+    },
+    xRightCorner(endAngle) {
+      return (
+        this.wheelCenter +
+        this.arcRadius * Math.sin(this.finishArcAngle(endAngle))
+      );
+    },
+    yRightCorner(endAngle) {
+      return (
+        this.wheelCenter -
+        this.arcRadius * Math.cos(this.finishArcAngle(endAngle))
+      );
+    }
+  },
+  computed: {
+    wheelCenter() {
+      return this.viewBoxRange;
+    },
+    arcRadius() {
+      return this.viewBoxRange / 2;
+    },
+    degrePerArc() {
+      return 360 / this.circleSections.length;
+    },
+    offsetAngle() {
+      //? offset with GSAP ?
+      let offsetAngle = 0;
+      if (this.circleSections.length > 2) {
+        offsetAngle = this.degrePerArc / 2;
+      }
+      return offsetAngle;
+    }
+  }
+};
 </script>
-
 
 <style lang="sass" scoped>
 svg
-  height: 400px
+  // position: fixed
+  // width: 100%
+  // height: 100%
+  // margin-left: -50%
   border: 4px solid teal
 </style>
