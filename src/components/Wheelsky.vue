@@ -3,6 +3,7 @@
     <svg
       xmlns="http://www.w3.org/2000/svg"
       :viewBox="`0 0 ${viewBoxRange * 2} ${viewBoxRange * 2}`"
+      id="wheel"
     >
       <ellipse :cx="viewBoxRange" :cy="viewBoxRange" :rx="arcRadius" :ry="arcRadius" fill="#eee"></ellipse>
       <path
@@ -27,6 +28,8 @@
 </template>
 
 <script>
+import Draggable from "gsap/Draggable";
+
 export default {
   data() {
     return {
@@ -41,6 +44,9 @@ export default {
     } else {
       console.log("it's ok");
     }
+    Draggable.create("#wheel", {
+      type: "rotation"
+    });
   },
   methods: {
     drawCirclePath(alpha, beta) {
@@ -112,4 +118,5 @@ svg
   // height: 100%
   // margin-left: -50%
   border: 4px solid teal
+  stroke-dashoffset: -274
 </style>
