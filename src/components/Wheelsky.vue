@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div class="svg-box">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="500px"
       height="500px"
-      :viewBox="`0 0 ${viewBoxRange * 2} ${viewBoxRange * 2}`"
       id="wheel"
+      :viewBox="`0 0 ${viewBoxRange * 2} ${viewBoxRange * 2}`"
       class="left-offset"
     >
       <ellipse :cx="viewBoxRange" :cy="viewBoxRange" :rx="arcRadius" :ry="arcRadius" fill="#eee"></ellipse>
@@ -15,32 +15,37 @@
         :d="drawCirclePath(degrePerArc * index, degrePerArc * (index + 1))"
         :fill="element.color"
       ></path>
-      <path
-        v-for="(element, index) in elements"
-        :key="element.id"
-        :id="`arc_path${index + 1}`"
-        :d="drawTextPath(degrePerArc * index, degrePerArc * (index + 1), 0.85)"
-        opacity="0"
-      ></path>
-      <!-- $$('svg path')[0].getTotalLength()-->
-      <text>
-        <textPath
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          v-bind="{'xlink:href':`#arc_path${test}`}"
-          text-anchor="middle"
-          startOffset="50%"
-          fill="white"
-        >Dark Souls is Awesome !</textPath>
-      </text>
+      <g v-for="(element, index) in elements" :key="element.id">
+        <path
+          :id="`arc_path${index + 1}`"
+          :d="drawTextPath(degrePerArc * index, degrePerArc * (index + 1), 0.85)"
+          opacity="0"
+        ></path>
+        <text>
+          <textPath
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            v-bind="{'xlink:href':`#arc_path${index + 1}`}"
+            text-anchor="middle"
+            startOffset="50%"
+            fill="white"
+          >
+            <tspan class="curved-text">{{ element.name }}</tspan>
+          </textPath>
+        </text>
+      </g>
       <circle
         @click="backButtonClick"
         :cx="wheelCenter"
         :cy="wheelCenter"
-        r="30"
-        fill="teal"
+        :r="arcRadius / 6"
+        fill="grey"
         data-clickable="true"
       ></circle>
+      <!-- $$('svg path')[0].getTotalLength()-->
     </svg>
+    <span class="test">
+      <img src="../assets/fortune_arrow.png" alt="fortune_arrow">
+    </span>
   </div>
 </template>
 
@@ -51,27 +56,27 @@ export default {
   data() {
     return {
       viewBoxRange: 500,
-      arcRadius: 400,
+      arcRadius: 500,
       test: 2,
       elements: [
         {
-          name: "a",
+          name: "banana",
           color: "#1ad1e5"
         },
         {
-          name: "b",
+          name: "strawberry",
           color: "#e2071c"
         },
         {
-          name: "c",
+          name: "cherry",
           color: "#fb1"
         },
         {
-          name: "d",
+          name: "pineapple",
           color: "#b000b5"
         },
         {
-          name: "e",
+          name: "watermelon",
           color: "#fa7a55"
         }
       ]
@@ -89,10 +94,10 @@ export default {
         //todo only available with the GreenClub...
         return Math.round(endValue / 90) * 90;
       },
-      dragResistance: 0.5,
+      dragResistance: 0.2,
       allowContextMenu: true,
       onDragEnd() {
-        console.log("drag has ended\n", this);
+        console.log("drag has ended\n", this.rotation);
       },
       bounds: { minRotation: -10000, maxRotation: 10000 }
     });
@@ -174,12 +179,24 @@ export default {
 
 <style lang="sass" scoped>
 svg
-  // position: absolute
-  width: 100vw
-  height: 100vh
+  width: 90vw
+  height: 90vh
   margin: 0
   padding: 0
   border: 4px solid teal
+.svg-box
+  position: absolute
 .left-offset
   // transform: translateX(-50vw)
+.curved-text
+  font-size: 2rem
+.anchor
+  stroke: rgb(0,0,0)
+  stroke-width: 2
+.test
+  position: absolute
+  top: 47%
+  right: 0%
+  img
+    width: 64px
 </style>
