@@ -12,9 +12,15 @@
       <path
         v-for="(element, index) in elements"
         :key="element.id"
-        :id="`arc_path${index + 1}`"
         :d="drawCirclePath(degrePerArc * index, degrePerArc * (index + 1))"
         :fill="element.color"
+      ></path>
+      <path
+        v-for="(element, index) in elements"
+        :key="element.id"
+        :id="`arc_path${index + 1}`"
+        :d="drawTextPath(degrePerArc * index, degrePerArc * (index + 1), 0.85)"
+        opacity="0"
       ></path>
       <!-- $$('svg path')[0].getTotalLength()-->
       <text>
@@ -23,6 +29,7 @@
           v-bind="{'xlink:href':`#arc_path${test}`}"
           text-anchor="middle"
           startOffset="50%"
+          fill="white"
         >Dark Souls is Awesome !</textPath>
       </text>
       <circle
@@ -102,6 +109,16 @@ export default {
       console.log(x);
       return x;
     },
+    drawTextPath(alpha, beta, ratio) {
+      return `M ${this.xRightCorner(beta, ratio)} ${this.yRightCorner(
+        beta,
+        ratio
+      )}
+      A ${this.arcRadius} ${this.arcRadius} 0 0 0 ${this.xLeftCorner(
+        alpha,
+        ratio
+      )} ${this.yLeftCorner(alpha, ratio)}`;
+    },
     backButtonClick() {
       console.log("clicked");
     },
@@ -111,26 +128,28 @@ export default {
     finishArcAngle(angle) {
       return (angle * Math.PI) / 180;
     },
-    xLeftCorner(angle) {
-      return (
-        this.wheelCenter + this.arcRadius * Math.sin(this.startArcAngle(angle))
-      );
-    },
-    yLeftCorner(angle) {
-      return (
-        this.wheelCenter - this.arcRadius * Math.cos(this.startArcAngle(angle))
-      );
-    },
-    xRightCorner(endAngle) {
+    xLeftCorner(angle, scaleRatio = 1) {
       return (
         this.wheelCenter +
-        this.arcRadius * Math.sin(this.finishArcAngle(endAngle))
+        this.arcRadius * scaleRatio * Math.sin(this.startArcAngle(angle))
       );
     },
-    yRightCorner(endAngle) {
+    yLeftCorner(angle, scaleRatio = 1) {
       return (
         this.wheelCenter -
-        this.arcRadius * Math.cos(this.finishArcAngle(endAngle))
+        this.arcRadius * scaleRatio * Math.cos(this.startArcAngle(angle))
+      );
+    },
+    xRightCorner(endAngle, scaleRatio = 1) {
+      return (
+        this.wheelCenter +
+        this.arcRadius * scaleRatio * Math.sin(this.finishArcAngle(endAngle))
+      );
+    },
+    yRightCorner(endAngle, scaleRatio = 1) {
+      return (
+        this.wheelCenter -
+        this.arcRadius * scaleRatio * Math.cos(this.finishArcAngle(endAngle))
       );
     }
   },
