@@ -97,7 +97,7 @@ export default {
       dragResistance: 0.2,
       allowContextMenu: true,
       onDragEnd() {
-        console.log("drag has ended\n", this.rotation);
+        console.log("drag has ended\n", Math.abs((-this.rotation + 90) % 360));
       },
       bounds: { minRotation: -10000, maxRotation: 10000 }
     });
@@ -128,7 +128,8 @@ export default {
       console.log("clicked");
     },
     startArcAngle(angle) {
-      return (angle * Math.PI) / 180;
+      return ((angle + 0) * Math.PI) / 180 + 0;
+      //! add offset here
     },
     finishArcAngle(angle) {
       return (angle * Math.PI) / 180;
@@ -190,6 +191,7 @@ svg
   // transform: translateX(-50vw)
 .curved-text
   font-size: 2rem
+  border: 2px solid yellow
 .anchor
   stroke: rgb(0,0,0)
   stroke-width: 2
