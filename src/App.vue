@@ -1,6 +1,6 @@
 <template>
   <div>
-    <wheelsky></wheelsky>
+    <wheelsky :elements="flavors"></wheelsky>
   </div>
 </template>
 
@@ -11,6 +11,32 @@ export default {
   name: "app",
   components: {
     Wheelsky
+  },
+  data() {
+    return {
+      flavors: [
+        {
+          name: "banana",
+          color: "#1ad1e5"
+        },
+        {
+          name: "strawberry",
+          color: "#e2071c"
+        },
+        {
+          name: "cherry",
+          color: "#fb1"
+        },
+        {
+          name: "pineapple",
+          color: "#b000b5"
+        },
+        {
+          name: "watermelon",
+          color: "#fa7a55"
+        }
+      ]
+    };
   }
 };
 </script>
