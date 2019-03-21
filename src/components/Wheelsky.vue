@@ -53,33 +53,15 @@
 import Draggable from "gsap/Draggable";
 
 export default {
+  props: {
+    elements: {
+      type: Array
+    }
+  },
   data() {
     return {
       viewBoxRange: 500,
-      arcRadius: 500,
-      test: 2,
-      elements: [
-        {
-          name: "banana",
-          color: "#1ad1e5"
-        },
-        {
-          name: "strawberry",
-          color: "#e2071c"
-        },
-        {
-          name: "cherry",
-          color: "#fb1"
-        },
-        {
-          name: "pineapple",
-          color: "#b000b5"
-        },
-        {
-          name: "watermelon",
-          color: "#fa7a55"
-        }
-      ]
+      arcRadius: 500
     };
   },
   mounted() {
@@ -88,6 +70,7 @@ export default {
     } else {
       console.log("it's ok");
     }
+    const vueInstance = this;
     Draggable.create("#wheel", {
       type: "rotation",
       snap: function(endValue) {
@@ -97,11 +80,19 @@ export default {
       dragResistance: 0.2,
       allowContextMenu: true,
       onDragEnd() {
-        console.log("drag has ended\n", Math.abs((-this.rotation + 90) % 360));
+        const flavorIndex = Math.floor(
+          Math.abs((-this.rotation + 90) % 360) / vueInstance.degrePerArc
+        );
+        console.log(
+          `The chosen flavor is ${vueInstance.elements[flavorIndex].name}`
+        );
       },
       bounds: { minRotation: -10000, maxRotation: 10000 }
     });
   },
+
+  //todo need to export that somewhere, to messy atm
+
   methods: {
     drawCirclePath(alpha, beta) {
       console.log(alpha, beta);
@@ -129,7 +120,6 @@ export default {
     },
     startArcAngle(angle) {
       return ((angle + 0) * Math.PI) / 180 + 0;
-      //! add offset here
     },
     finishArcAngle(angle) {
       return (angle * Math.PI) / 180;
@@ -167,7 +157,6 @@ export default {
       return 360 / this.elements.length;
     },
     offsetAngle() {
-      //? offset with GSAP ?
       let offsetAngle = 0;
       if (this.elements.length > 2) {
         offsetAngle = this.degrePerArc / 2;
@@ -180,8 +169,8 @@ export default {
 
 <style lang="sass" scoped>
 svg
-  width: 90vw
-  height: 90vh
+  width: 100%
+  height: 100%
   margin: 0
   padding: 0
   border: 4px solid teal
@@ -198,7 +187,7 @@ svg
 .test
   position: absolute
   top: 47%
-  right: 0%
+  right: -5%
   img
     width: 64px
 </style>
