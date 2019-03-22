@@ -83,6 +83,7 @@ export default {
         const flavorIndex = Math.floor(
           Math.abs((-this.rotation + 90) % 360) / vueInstance.degrePerArc
         );
+        vueInstance.$emit("update-flavor", vueInstance.elements[flavorIndex]);
         console.log(
           `The chosen flavor is ${vueInstance.elements[flavorIndex].name}`
         );
@@ -91,9 +92,12 @@ export default {
     });
   },
 
-  //todo need to export that somewhere, to messy atm
+  //todo need to export that somewhere, too messy atm
 
   methods: {
+    backButtonClick() {
+      console.log("clicked");
+    },
     drawCirclePath(alpha, beta) {
       console.log(alpha, beta);
       // alpha is start angle, beta is end of the circle arc, both in degrees
@@ -114,9 +118,6 @@ export default {
         alpha,
         ratio
       )} ${this.yLeftCorner(alpha, ratio)}`;
-    },
-    backButtonClick() {
-      console.log("clicked");
     },
     startArcAngle(angle) {
       return ((angle + 0) * Math.PI) / 180 + 0;
