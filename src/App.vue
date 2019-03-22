@@ -1,16 +1,19 @@
 <template>
   <div>
-    <wheelsky :elements="flavors"></wheelsky>
+    <wheelsky @update-flavor="updateSelectedFlavor" :elements="flavors"></wheelsky>
+    <flavor-details :selected="selectedFlavor"></flavor-details>
   </div>
 </template>
 
 <script>
 import Wheelsky from "./components/Wheelsky.vue";
+import FlavorDetails from "./components/FlavorDetails.vue";
 
 export default {
   name: "app",
   components: {
-    Wheelsky
+    Wheelsky,
+    FlavorDetails
   },
   data() {
     return {
@@ -35,8 +38,14 @@ export default {
           name: "watermelon",
           color: "#fa7a55"
         }
-      ]
+      ],
+      selectedFlavor: null
     };
+  },
+  methods: {
+    updateSelectedFlavor(e) {
+      this.selectedFlavor = e.name;
+    }
   }
 };
 </script>
