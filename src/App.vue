@@ -39,7 +39,7 @@ export default {
           color: "#fa7a55"
         }
       ],
-      selectedFlavor: null
+      selectedFlavor: undefined
     };
   },
   methods: {
@@ -47,6 +47,16 @@ export default {
       this.selectedFlavor = e.name;
     }
   }
+  // computed: {
+  //   selectedFlavor: {
+  //     get() {
+  //       return this.flavors[0].name;
+  //     },
+  //     set(newValue) {
+  //       return newValue;
+  //     }
+  //   }
+  // }
 };
 </script>
 

@@ -79,35 +79,27 @@ export default {
       },
       dragResistance: 0.2,
       allowContextMenu: true,
-      onDragEnd() {
-        const flavorIndex = Math.floor(
-          Math.abs((-this.rotation + 90) % 360) / vueInstance.degrePerArc
-        );
-        vueInstance.$emit("update-flavor", vueInstance.elements[flavorIndex]);
-        console.log(
-          `The chosen flavor is ${vueInstance.elements[flavorIndex].name}`
-        );
+      onDrag() {
+        vueInstance.wheelRot = this;
       },
       bounds: { minRotation: -10000, maxRotation: 10000 }
     });
+    this.$nextTick(function() {
+      this.checkFlavor;
+    });
   },
-
   //todo need to export that somewhere, too messy atm
-
   methods: {
     backButtonClick() {
       console.log("clicked");
     },
     drawCirclePath(alpha, beta) {
-      console.log(alpha, beta);
       // alpha is start angle, beta is end of the circle arc, both in degrees
-      let x = `M ${this.xLeftCorner(alpha)} ${this.yLeftCorner(alpha)}
+      return `M ${this.xLeftCorner(alpha)} ${this.yLeftCorner(alpha)}
       A ${this.arcRadius} ${this.arcRadius} 0 0 1 ${this.xRightCorner(
         beta
       )} ${this.yRightCorner(beta)}
       L ${this.wheelCenter} ${this.wheelCenter}z`;
-      console.log(x);
-      return x;
     },
     drawTextPath(alpha, beta, ratio) {
       return `M ${this.xRightCorner(beta, ratio)} ${this.yRightCorner(
@@ -150,6 +142,11 @@ export default {
       );
     }
   },
+  watch: {
+    wheelRotation(newValue, oldValue) {
+      return console.log("spinning");
+    }
+  },
   computed: {
     wheelCenter() {
       return this.viewBoxRange;
@@ -163,6 +160,28 @@ export default {
         offsetAngle = this.degrePerArc / 2;
       }
       return offsetAngle;
+    },
+    yolo() {
+      return "42";
+    },
+    wheelRot() {
+      return Draggable.get("#wheel").rotation;
+    },
+    test() {
+      this.yolo;
+      this.$forceUpdate();
+      return console.log("test passed");
+    },
+    checkFlavor() {
+      const flavorIndex = Math.floor(
+        ((-Draggable.get("#wheel").rotation + 90) % 360) / this.degrePerArc
+      );
+      console.log(flavorIndex);
+      this.$emit("update-flavor", this.elements.slice(flavorIndex)[0]);
+      console.log(
+        `The chosen flavor is ${this.elements.slice(flavorIndex)[0].name}`
+      );
+      return flavorIndex;
     }
   }
 };

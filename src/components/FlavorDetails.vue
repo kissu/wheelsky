@@ -7,7 +7,7 @@ export default {
   props: {
     selected: {
       type: String,
-      default: "nice",
+      default: "Error on the selected flavor...",
       required: true
     }
   }
