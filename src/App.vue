@@ -1,6 +1,6 @@
 <template>
   <div>
-    <wheelsky @update-flavor="updateSelectedFlavor" :elements="flavors"></wheelsky>
+    <wheelsky @update-flavor="updateSelectedFlavor" :selected="selectedFlavor" :elements="flavors"></wheelsky>
     <flavor-details :selected="selectedFlavor"></flavor-details>
   </div>
 </template>
@@ -48,25 +48,31 @@ export default {
     }
   }
   // computed: {
-  //   selectedFlavor: {
-  //     get() {
-  //       return this.flavors[0].name;
-  //     },
-  //     set(newValue) {
-  //       return newValue;
-  //     }
+  // selectedFlavor: {
+  //   get() {
+  //     return this.flavors[0].name;
+  //   },
+  //   set(newValue) {
+  //     return newValue;
   //   }
+  // }
   // }
 };
 </script>
 
 <style lang="scss">
+* {
+  box-sizing: content-box;
+  overflow: auto;
+}
+body {
+  margin: 0;
+}
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>

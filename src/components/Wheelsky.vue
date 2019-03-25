@@ -56,6 +56,9 @@ export default {
   props: {
     elements: {
       type: Array
+    },
+    selected: {
+      type: String
     }
   },
   data() {
@@ -80,12 +83,12 @@ export default {
       dragResistance: 0.2,
       allowContextMenu: true,
       onDrag() {
-        vueInstance.wheelRot = this;
+        vueInstance.checkFlavor(this);
       },
       bounds: { minRotation: -10000, maxRotation: 10000 }
     });
     this.$nextTick(function() {
-      this.checkFlavor;
+      this.checkFlavor(Draggable.get("#wheel"));
     });
   },
   //todo need to export that somewhere, too messy atm
@@ -140,11 +143,18 @@ export default {
         this.wheelCenter -
         this.arcRadius * scaleRatio * Math.cos(this.finishArcAngle(endAngle))
       );
-    }
-  },
-  watch: {
-    wheelRotation(newValue, oldValue) {
-      return console.log("spinning");
+    },
+    checkFlavor(draggableElement) {
+      const flavorIndex = Math.floor(
+        ((-draggableElement.rotation + 90) % 360) / this.degrePerArc
+      );
+      if (this.selected != this.elements.slice(flavorIndex)[0].name) {
+        this.$emit("update-flavor", this.elements.slice(flavorIndex)[0]);
+      }
+      console.log(
+        `The chosen flavor is ${this.elements.slice(flavorIndex)[0].name}`
+      );
+      return flavorIndex;
     }
   },
   computed: {
@@ -160,46 +170,26 @@ export default {
         offsetAngle = this.degrePerArc / 2;
       }
       return offsetAngle;
-    },
-    yolo() {
-      return "42";
-    },
-    wheelRot() {
-      return Draggable.get("#wheel").rotation;
-    },
-    test() {
-      this.yolo;
-      this.$forceUpdate();
-      return console.log("test passed");
-    },
-    checkFlavor() {
-      const flavorIndex = Math.floor(
-        ((-Draggable.get("#wheel").rotation + 90) % 360) / this.degrePerArc
-      );
-      console.log(flavorIndex);
-      this.$emit("update-flavor", this.elements.slice(flavorIndex)[0]);
-      console.log(
-        `The chosen flavor is ${this.elements.slice(flavorIndex)[0].name}`
-      );
-      return flavorIndex;
     }
   }
 };
 </script>
 
 <style lang="sass" scoped>
-svg
-  width: 100%
-  height: 100%
-  margin: 0
+.svg-box
+  display: flex
+  justify-content: center
+  align-items: center
+  height: 80%
+  width: 80%
+svg#wheel
+  width: 80vw
+  height: 80vw
+  // transform: translateX(-50vw)
   padding: 0
   border: 4px solid teal
-.svg-box
-  position: absolute
-.left-offset
-  // transform: translateX(-50vw)
 .curved-text
-  font-size: 2rem
+  font-size: 3rem
   border: 2px solid yellow
 .anchor
   stroke: rgb(0,0,0)
