@@ -63,7 +63,7 @@ export default {
 <style lang="scss">
 * {
   box-sizing: content-box;
-  overflow: auto;
+  // overflow: auto;
 }
 body {
   margin: 0;

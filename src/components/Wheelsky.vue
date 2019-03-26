@@ -37,15 +37,12 @@
         @click="backButtonClick"
         :cx="wheelCenter"
         :cy="wheelCenter"
-        :r="arcRadius / 6"
+        :r="arcRadius / 4"
         fill="grey"
         data-clickable="true"
       ></circle>
       <!-- $$('svg path')[0].getTotalLength()-->
     </svg>
-    <span class="test">
-      <img src="../assets/fortune_arrow.png" alt="fortune_arrow">
-    </span>
   </div>
 </template>
 
@@ -177,15 +174,15 @@ export default {
 
 <style lang="sass" scoped>
 .svg-box
-  display: flex
-  justify-content: center
-  align-items: center
-  height: 80%
-  width: 80%
+  width: 100%
+  // position: relative
 svg#wheel
-  width: 80vw
-  height: 80vw
-  // transform: translateX(-50vw)
+  // position: absolute
+  // margin-top: 10vw
+  width: 80%
+  height: 100vh
+  transform: translate3d(-50%, 0, 0)
+  overflow: hidden
   padding: 0
   border: 4px solid teal
 .curved-text
@@ -194,10 +191,4 @@ svg#wheel
 .anchor
   stroke: rgb(0,0,0)
   stroke-width: 2
-.test
-  position: absolute
-  top: 47%
-  right: -5%
-  img
-    width: 64px
 </style>
