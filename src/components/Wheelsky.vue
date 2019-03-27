@@ -9,12 +9,12 @@
       <!-- height and width of 500px was previously applied here -->
       <!-- <ellipse :cx="viewBoxRange" :cy="viewBoxRange" :rx="arcRadius" :ry="arcRadius" fill="#eee"></ellipse> -->
       <path
-        v-for="(element, index) in elements"
-        :key="element.id"
+        v-for="(flavor, index) in availableFlavors"
+        :key="flavor.id"
         :d="drawCirclePath(degrePerArc * index, degrePerArc * (index + 1))"
-        :fill="element.color"
+        :fill="flavor.color"
       ></path>
-      <g v-for="(element, index) in elements" :key="element.id">
+      <g v-for="(flavor, index) in availableFlavors" :key="flavor.id">
         <path
           :id="`arc_path${index + 1}`"
           :d="drawTextPath(degrePerArc * index, degrePerArc * (index + 1), 0.85)"
@@ -28,7 +28,7 @@
             startOffset="50%"
             fill="white"
           >
-            <tspan class="curved-text">{{ element.name }}</tspan>
+            <tspan class="curved-text">{{ flavor.name }}</tspan>
           </textPath>
         </text>
       </g>
@@ -69,10 +69,10 @@ import Draggable from "gsap/Draggable";
 
 export default {
   props: {
-    elements: {
+    availableFlavors: {
       type: Array
     },
-    selected: {
+    highlightedFlavor: {
       type: String
     }
   },
@@ -83,7 +83,7 @@ export default {
     };
   },
   mounted() {
-    if (this.elements.length == 1) {
+    if (this.availableFlavors.length == 1) {
       console.log("we should GSAP lock the rotation here !");
     } else {
       console.log("it's ok");
@@ -163,11 +163,19 @@ export default {
       const flavorIndex = Math.floor(
         ((-draggableElement.rotation + 90) % 360) / this.degrePerArc
       );
-      if (this.selected != this.elements.slice(flavorIndex)[0].name) {
-        this.$emit("update-flavor", this.elements.slice(flavorIndex)[0]);
+      if (
+        this.highlightedFlavor !=
+        this.availableFlavors.slice(flavorIndex)[0].name
+      ) {
+        this.$emit(
+          "update-flavor",
+          this.availableFlavors.slice(flavorIndex)[0]
+        );
       }
       console.log(
-        `The chosen flavor is ${this.elements.slice(flavorIndex)[0].name}`
+        `The chosen flavor is ${
+          this.availableFlavors.slice(flavorIndex)[0].name
+        }`
       );
       return flavorIndex;
     }
@@ -177,11 +185,11 @@ export default {
       return this.viewBoxRange;
     },
     degrePerArc() {
-      return 360 / this.elements.length;
+      return 360 / this.availableFlavors.length;
     },
     offsetAngle() {
       let offsetAngle = 0;
-      if (this.elements.length > 2) {
+      if (this.availableFlavors.length > 2) {
         offsetAngle = this.degrePerArc / 2;
       }
       return offsetAngle;
@@ -211,11 +219,8 @@ export default {
   height: 30vh
   max-height: 300px
   transform: translate(-50%, -50%)
-  width: auto
+  width: 30%
 .curved-text
   font-size: 3rem
   border: 2px solid yellow
-.anchor
-  stroke: rgb(0,0,0)
-  stroke-width: 2
 </style>

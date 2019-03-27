@@ -2,12 +2,12 @@
   <div class="main-content">
     <wheelsky
       class="wheel-block"
-      @update-flavor="updateSelectedFlavor"
-      :selected="selectedFlavor"
-      :elements="flavors"
+      @update-flavor="updateHighlightedFlavor"
+      :highlightedFlavor="highlightedFlavor"
+      :availableFlavors="allFlavors"
     ></wheelsky>
     <div class="right-aside-block">
-      <flavor-details class="details-block" :selected="selectedFlavor"></flavor-details>
+      <flavor-details class="details-block" :highlighted="highlightedFlavor"></flavor-details>
       <chosen-flavors></chosen-flavors>
     </div>
   </div>
@@ -27,7 +27,7 @@ export default {
   },
   data() {
     return {
-      flavors: [
+      allFlavors: [
         {
           name: "banana",
           color: "#1ad1e5"
@@ -49,12 +49,14 @@ export default {
           color: "#fa7a55"
         }
       ],
-      selectedFlavor: undefined
+      highlightedFlavor: undefined,
+      selectedFlavors: ["Aucun parfum choisi"]
+      // wholeFlavors.filter(arr => selectedFlavors.indexOf(arr) < 0);
     };
   },
   methods: {
-    updateSelectedFlavor(e) {
-      this.selectedFlavor = e.name;
+    updateHighlightedFlavor(e) {
+      this.highlightedFlavor = e.name;
     }
   }
 };

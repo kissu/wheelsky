@@ -1,6 +1,6 @@
 <template>
   <div class="details">
-    <p>{{ selected }}</p>
+    <p>{{ highlighted }}</p>
     <button class="btn btn-yellow">Choose me senpai button !</button>
   </div>
 </template>
@@ -8,9 +8,9 @@
 <script>
 export default {
   props: {
-    selected: {
+    highlighted: {
       type: String,
-      default: "Error on the selected flavor...",
+      default: "Error on the highlighted flavor...",
       required: true
     }
   }
