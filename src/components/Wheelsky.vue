@@ -200,7 +200,7 @@ export default {
   transform: translate3d(-50%, 0, 0)
 #wheel
   width: 100%
-  height: 100vh
+  height: 98vh
   max-height: 1000px
   overflow: hidden
   padding: 0
