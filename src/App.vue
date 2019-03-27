@@ -6,19 +6,24 @@
       :selected="selectedFlavor"
       :elements="flavors"
     ></wheelsky>
-    <flavor-details class="details-block" :selected="selectedFlavor"></flavor-details>
+    <div class="right-aside-block">
+      <flavor-details class="details-block" :selected="selectedFlavor"></flavor-details>
+      <chosen-flavors></chosen-flavors>
+    </div>
   </div>
 </template>
 
 <script>
 import Wheelsky from "./components/Wheelsky.vue";
 import FlavorDetails from "./components/FlavorDetails.vue";
+import ChosenFlavors from "./components/ChosenFlavors.vue";
 
 export default {
   name: "app",
   components: {
     Wheelsky,
-    FlavorDetails
+    FlavorDetails,
+    ChosenFlavors
   },
   data() {
     return {
@@ -75,6 +80,10 @@ body
 .wheel-block
   position: relative
   flex: 1 1 0
-.details-block
+.right-aside-block
+  display: flex
+  flex-direction: column
   flex: 1 0 0
+  transform: translate3d(-25%, 0, 0)
+  border: 3px solid yellow
 </style>
