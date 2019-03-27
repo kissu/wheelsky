@@ -1,7 +1,12 @@
 <template>
-  <div>
-    <wheelsky @update-flavor="updateSelectedFlavor" :selected="selectedFlavor" :elements="flavors"></wheelsky>
-    <flavor-details :selected="selectedFlavor"></flavor-details>
+  <div class="main-content">
+    <wheelsky
+      class="wheel-block"
+      @update-flavor="updateSelectedFlavor"
+      :selected="selectedFlavor"
+      :elements="flavors"
+    ></wheelsky>
+    <flavor-details class="details-block" :selected="selectedFlavor"></flavor-details>
   </div>
 </template>
 
@@ -47,32 +52,29 @@ export default {
       this.selectedFlavor = e.name;
     }
   }
-  // computed: {
-  // selectedFlavor: {
-  //   get() {
-  //     return this.flavors[0].name;
-  //   },
-  //   set(newValue) {
-  //     return newValue;
-  //   }
-  // }
-  // }
 };
 </script>
 
-<style lang="scss">
-* {
-  box-sizing: content-box;
+<style lang="sass">
+*
+  box-sizing: content-box
   // overflow: auto;
-}
-body {
-  margin: 0;
-}
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+body
+  margin: 0
+#app
+  font-family: "Avenir", Helvetica, Arial, sans-serif
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  text-align: center
+  color: #2c3e50
+.main-content
+  width: 100%
+  display: flex
+  justify-content: center
+  align-items: center
+.wheel-block
+  position: relative
+  flex: 1 1 0
+.details-block
+  flex: 1 0 0
 </style>
