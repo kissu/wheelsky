@@ -2,13 +2,12 @@
   <div class="svg-box">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="500px"
-      height="500px"
       id="wheel"
       :viewBox="`0 0 ${viewBoxRange * 2} ${viewBoxRange * 2}`"
       class="left-offset"
     >
-      <ellipse :cx="viewBoxRange" :cy="viewBoxRange" :rx="arcRadius" :ry="arcRadius" fill="#eee"></ellipse>
+      <!-- height and width of 500px was previously applied here -->
+      <!-- <ellipse :cx="viewBoxRange" :cy="viewBoxRange" :rx="arcRadius" :ry="arcRadius" fill="#eee"></ellipse> -->
       <path
         v-for="(element, index) in elements"
         :key="element.id"
@@ -33,15 +32,34 @@
           </textPath>
         </text>
       </g>
+      <!-- $$('svg path')[0].getTotalLength()-->
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      id="on-top-of-wheel"
+      :viewBox="`0 0 ${backButton * 2 + 100} ${backButton * 2 + 100}`"
+      class="left-offset"
+    >
       <circle
         @click="backButtonClick"
-        :cx="wheelCenter"
-        :cy="wheelCenter"
-        :r="arcRadius / 4"
-        fill="grey"
+        :cx="backButton"
+        :cy="backButton"
+        :r="backButton"
+        fill="#333"
         data-clickable="true"
+        stroke="#fff"
+        stroke-width="20"
       ></circle>
-      <!-- $$('svg path')[0].getTotalLength()-->
+      <polyline
+        fill="none"
+        stroke="#f2d024"
+        :stroke-width="backButton / 20"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        data-clickable="true"
+        :points="`${backButton * 1.6},${backButton / 2} ${backButton * 1.3},${backButton} ${backButton * 1.6},${backButton * 1.5}`"
+      ></polyline>
+      <!-- points="800,250 650,500 800,750" -->
     </svg>
   </div>
 </template>
@@ -112,7 +130,7 @@ export default {
       )} ${this.yLeftCorner(alpha, ratio)}`;
     },
     startArcAngle(angle) {
-      return ((angle + 0) * Math.PI) / 180 + 0;
+      return (angle * Math.PI) / 180;
     },
     finishArcAngle(angle) {
       return (angle * Math.PI) / 180;
@@ -167,6 +185,9 @@ export default {
         offsetAngle = this.degrePerArc / 2;
       }
       return offsetAngle;
+    },
+    backButton() {
+      return this.viewBoxRange;
     }
   }
 };
@@ -174,17 +195,23 @@ export default {
 
 <style lang="sass" scoped>
 .svg-box
-  width: 100%
-  // position: relative
-svg#wheel
-  // position: absolute
-  // margin-top: 10vw
-  width: 80%
-  height: 100vh
+  position: relative
+  width: 50%
   transform: translate3d(-50%, 0, 0)
+#wheel
+  width: 100%
+  height: 100vh
+  max-height: 1000px
   overflow: hidden
   padding: 0
-  border: 4px solid teal
+#on-top-of-wheel
+  position: absolute
+  top: 50%
+  left: 50%
+  height: 30vh
+  max-height: 300px
+  transform: translate(-50%, -50%)
+  width: auto
 .curved-text
   font-size: 3rem
   border: 2px solid yellow
