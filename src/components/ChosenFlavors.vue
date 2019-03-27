@@ -1,10 +1,10 @@
 <template>
   <div class="chosen-flavors">
-    <p>{ Choosen flavors }</p>
+    <p>Choosen flavors below</p>
     <p>data level depth:</p>
     <p>Cool list of flavors</p>
     <br>
-    <p>proceed further button !</p>
+    <!-- <button class="btn btn-yellow">proceed further button !</button> -->
   </div>
 </template>
 
@@ -13,5 +13,4 @@ export default {};
 </script>
 
 <style lang="sass" scoped>
-
 </style>
