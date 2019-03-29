@@ -1,9 +1,10 @@
 <template>
-  <form class="w-full max-w-md center">
+  <form name="degustation" method="POST" data-netlify="true" class="w-full max-w-md center">
     <div class="flex flex-wrap -mx-3 mb-5 mt-4">
       <div class="w-full md:w-1/2 px-3 mb-5 md:mb-0">
         <label
           for="user-email"
+          name="user-email"
           class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
         >Quelle est votre adresse mail ?</label>
       </div>
@@ -23,6 +24,7 @@
       <div class="w-full md:w-1/2 px-3 mb-5 md:mb-0">
         <label
           for="whisky-distillery"
+          name="whisky-distillery"
           class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
         >De quelle distillerie est l'alcool ?</label>
         <input
@@ -37,6 +39,7 @@
       <div class="w-full md:w-1/2 px-3">
         <label
           for="whisky-name"
+          name="whisky-name"
           class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2"
         >Quel est le nom du breuvage ?</label>
         <input
@@ -58,6 +61,7 @@
         <div class="relative">
           <select
             id="whisky-type"
+            name="whisky-type"
             v-model="whiskyType"
             class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple"
           >
@@ -89,6 +93,7 @@
         <div class="relative">
           <select
             id="whisky-origin"
+            name="whisky-origin"
             v-model="whiskyOrigin"
             class="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-purple"
           >
@@ -122,7 +127,8 @@
       </div>
       <div class="md:w-2/3">
         <input
-          v-model="test"
+          v-model="chosenFlavorsToSubmit"
+          name="parfums-choisis"
           class="bg-grey-lighter appearance-none border-2 border-grey-lighter rounded w-full py-2 px-4 text-grey-darker leading-tight focus:outline-none focus:bg-white focus:border-purple"
           id="parfums-choisis"
           type="text"
@@ -132,6 +138,7 @@
     </div>
 
     <button
+      type="submit"
       class="bg-purple mt-3 hover:bg-purple-dark text-white font-bold py-2 px-4 rounded-full"
     >Finir ma dégustation</button>
   </form>
@@ -151,7 +158,7 @@ export default {
       whiskyTypeOptions: whiskyType,
       whiskyOrigin: "",
       whiskyOriginOptions: whiskyOrigin,
-      test: ["a", "b", "c"]
+      chosenFlavorsToSubmit: ["a", "b", "c"]
     };
   }
 };
