@@ -1,13 +1,14 @@
 <template>
   <form
     name="degustation"
+    action="/"
     method="post"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
     class="w-full max-w-md center"
   >
-    <!-- action="/merci.html" -->
     <input type="hidden" name="form-name" value="degustation">
+    <!-- action="/merci.html" -->
     <div class="flex flex-wrap -mx-3 mb-5 mt-4">
       <div class="w-full md:w-1/2 px-3 mb-5 md:mb-0">
         <label
@@ -126,7 +127,7 @@
       </div>
     </div>
 
-    <div class="md:flex md:items-center mb-6">
+    <!-- <div class="md:flex md:items-center mb-6">
       <div class="md:w-1/3">
         <label
           class="block text-grey font-bold md:text-right mb-1 md:mb-0 pr-4"
@@ -143,7 +144,7 @@
           value="Jane Doe"
         >
       </div>
-    </div>
+    </div>-->
 
     <button
       type="submit"
