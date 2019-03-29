@@ -6,7 +6,6 @@
       @reset-wheel="resetWheel"
       :highlightedFlavor="highlightedFlavor"
       :availableFlavors="activeFlavorArray"
-      v-if="mounted"
       ref="wheel"
     ></wheelsky>
     <div class="right-aside-block">
@@ -27,6 +26,11 @@ import Draggable from "gsap/Draggable";
 import Wheelsky from "./components/Wheelsky.vue";
 import FlavorDetails from "./components/FlavorDetails.vue";
 import ChosenFlavors from "./components/ChosenFlavors.vue";
+import UserForm from "./components/UserForm.vue";
+
+import whiskyFlavors from "./data/whiskyFlavors.json";
+import whiskyOrigin from "./data/whiskyOrigin.json";
+import whiskyType from "./data/whiskyType.json";
 
 export default {
   name: "app",
@@ -59,86 +63,54 @@ export default {
           color: "#fa7a55"
         }
       ],
-      all: [
-        {
-          children: [
-            {
-              name: "a",
-              children: [
-                {
-                  name: "a1",
-                  children: [
-                    {
-                      name: "a1+"
-                    },
-                    {
-                      name: "a1++"
-                    },
-                    {
-                      name: "a1+++"
-                    }
-                  ]
-                },
-                {
-                  name: "a2",
-                  children: [
-                    {
-                      name: "a2+"
-                    }
-                  ]
-                },
-                {
-                  name: "a3",
-                  children: []
-                }
-              ]
-            },
-            {
-              name: "b",
-              children: [
-                {
-                  name: "b1",
-                  children: [
-                    {
-                      name: "b1+"
-                    }
-                  ]
-                },
-                { name: "b2", children: [] }
-              ]
-            },
-            {
-              name: "c",
-              children: [
-                {
-                  name: "c1",
-                  children: [
-                    {
-                      name: "c1+"
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ],
+      all: whiskyFlavors,
       highlightedFlavor: undefined,
       selectedFlavors: [],
       previouslySelectedFlavor: undefined,
       depthTier: 1,
-      mounted: true,
       activeFlavorArray: [
         {
-          name: "a"
+          name: "Doux"
         },
         {
-          name: "b"
+          name: "Floral"
         },
         {
-          name: "c"
+          name: "Fruité"
+        },
+        {
+          name: "Herbacé"
+        },
+        {
+          name: "Marin"
+        },
+        {
+          name: "Minéral"
+        },
+        {
+          name: "Huileux"
+        },
+        {
+          name: "Fumé"
+        },
+        {
+          name: "Soufré"
+        },
+        {
+          name: "Vineux"
+        },
+        {
+          name: "Boisé"
+        },
+        {
+          name: "Céréale"
         }
       ]
+    };
+  },
+  mounted() {
+    window.onbeforeunload = function() {
+      return "Êtes-vous sûr de vouloir recharger la page ?";
     };
   },
   methods: {
@@ -189,13 +161,40 @@ export default {
       this.depthTier = 1;
       this.activeFlavorArray = [
         {
-          name: "a"
+          name: "Doux"
         },
         {
-          name: "b"
+          name: "Floral"
         },
         {
-          name: "c"
+          name: "Fruité"
+        },
+        {
+          name: "Herbacé"
+        },
+        {
+          name: "Marin"
+        },
+        {
+          name: "Minéral"
+        },
+        {
+          name: "Huileux"
+        },
+        {
+          name: "Fumé"
+        },
+        {
+          name: "Soufré"
+        },
+        {
+          name: "Vineux"
+        },
+        {
+          name: "Boisé"
+        },
+        {
+          name: "Céréale"
         }
       ];
     }
