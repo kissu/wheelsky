@@ -17,7 +17,7 @@ export default {
   computed: {
     flavors() {
       if (this.selectedFlavors.length == 0) {
-        return ["Aucun parfum choisi"];
+        return ["Aucun parfum choisi pour le moment"];
       } else {
         return this.selectedFlavors.join(", ");
       }

@@ -1,7 +1,7 @@
 <template>
   <div class="details">
     <p>{{ highlightedFlavor }}</p>
-    <button class="btn btn-yellow" @click="digFlavor">Choose me senpai button !</button>
+    <button class="btn btn-yellow" @click="digFlavor">Choisir cette saveur</button>
   </div>
 </template>
 

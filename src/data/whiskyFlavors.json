@@ -1,0 +1,1686 @@
+[
+  {
+    "level": 0,
+    "children": [
+      {
+        "level": 1,
+        "name": "Doux",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Miel",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Cire d'abeille",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Miel de bruyère",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Miel de citronnier",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Rayon de miel",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Sirop",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Grenadine",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Griottes au sirop",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Sirop d’érable",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Sirop d’orge maltée",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Liqueur",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Liqueur amère",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Liqueur de fruit",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Liqueur de noix",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Liqueur plante",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Sucre",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Caramel",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cassonade",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Rhum",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Toffee",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Floral",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Fleur Blanche",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Cire d'abeille",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Miel de bruyere",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Miel de citronnier",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Rayon de miel",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Fragrance",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Grenadine",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Griottes au sirop",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Sirop d’érable",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Sirop d’orge maltée",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Floraison",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Liqueur amère",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Liqueur de fruit",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Liqueur de noix",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Liqueur plante",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Officinal",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Caramel",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cassonade",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Rhum",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Toffee",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Fruité",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Fruit cuit",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Agrumes confits",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Confiture de fruits",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Gelée de coings",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cake aux fruits",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Fruit séché",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Datte",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Figue",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Raisins secs",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Fruit frais",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Pomme",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Framboise",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Litchi",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Melon vert",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Pèche",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Poire",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Citrique",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Agrumes",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Ananas",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cassis",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Groseille à maquereau",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Rhubarbe",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Zeste d’agrume",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Solvant",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Dissolvant pour ongles",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Térébentine",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Herbacé",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Plante",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Menthe",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Oliver verte",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Pelouse tondue",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Coumarine",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Feuille",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Eucalyptus",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Tabac",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Thé vert",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Tilleul",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Plante aromatique",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Anis vert",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Coriandre",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Romarin",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Thym",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Amer",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Gentiane",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Grande absinthe",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Quinine",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Zeste d’orange amère",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Marin",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Iodé",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Eau saumâtre",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Embruns marins",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Marais salin",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Saumure",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Algue",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Algue séchée",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Kelp",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Salicorne",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Varech",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Fruits de mer",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Crabe",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Huître",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Ormeau",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Oursin",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Poisson",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Anchois",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Salmiak",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Minéral",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Alambique",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Cuivre",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Airain",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Métallique",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Rail métallique",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Fonte",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Fer",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Encre",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Silex",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Silex",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Pierre à fusil",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Grattoir d’allumette",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Graphite",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Plage",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Sel",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Sable chaud",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Rocher mouillé",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Galet",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Calcaire",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Ardoise",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Craie",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Coquille",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Chablis",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Calcaire",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Huileux",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Cuir",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Sellerie de cuir",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Muse",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cuir de Russie",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Porc bouilli",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Fromager",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Parmesan vieux",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Comté",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Beurré",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Viennoiserie",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Sablé au beurre",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Beurre",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Lacté",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Yaourt",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Lait de poule",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Lait de coco",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Crème double",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Huile végétale",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Huile d’olive",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Huile de lin",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Huile de sésame",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cire de bougie",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Fumé",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Brûlé",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Suie",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Feuilles brûlées",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cendre",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Braises",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Fumaison",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Sauna enfumé",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Poissons fumés",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Lapsang souchong",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Feu de bois",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Encens",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Tourbé",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Huile de tourbe",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Goudron",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Fumée de tourbe",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Créosote",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Médicinal",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "TCP antiseptique",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Pansement",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Camphre",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Arnica",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Soufré",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Caoutchouc",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Plastique",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Caoutchouc",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Allumettes craquées",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Viandé",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Viande grillée BBQ",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Tourte à la viande",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Sauce Worcestershire",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Légume",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Olive noire",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Oignon",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Choux",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Vineux",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Spiritueux",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Brandy",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Eau-de-vie de fruit",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cognac",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Calvados",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Vin de fruit",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Vin de rhubarbe",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Vin de noix",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Vin de pèche",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Vin de cassis",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Vin muté",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Vins doux naturels",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Porot",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Marsala",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Madère",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Xérès",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Vinaigre de Xérès",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Oloroso",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Pedro Ximenez",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Fino",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Vin",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Sauternes",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Pinot noir",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Chardonnay",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cabernet sauvignon",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Boisé",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Bois",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Résine de pin",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Rancio",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Chêne",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Bois neuf",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Épicé",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Poivre",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Gingembre",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Clou de girofle",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Cannelle",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Boite à cigare",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Fruit à coque",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Noix de coco",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Noix",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Noisette",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Grillé",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Réglisse",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Chocolat",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Café",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Amande grillée",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Vanillé",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Vanille bourbon",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Réséda",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Meringue",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Crème brûlée",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "level": 1,
+        "name": "Céréale",
+        "wall": "",
+        "children": [
+          {
+            "level": 2,
+            "name": "Grain",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Maïs",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Orge",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Seigle",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Weetabix",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Sucre d’orge",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Malté",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Malt biscuit",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Malt vert",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Orge maltée",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Bouillie",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Bouillie",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Nouilles",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Pomme de terre cuite",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Brioche",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Marmite",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Levure",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Pain",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Pâte à crêpe",
+                "wall": "",
+                "children": []
+              }
+            ]
+          },
+          {
+            "level": 2,
+            "name": "Brassin",
+            "wall": "",
+            "children": [
+              {
+                "level": 3,
+                "name": "Ale",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Bière blanche",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Bière ambrée",
+                "wall": "",
+                "children": []
+              },
+              {
+                "level": 3,
+                "name": "Lager",
+                "wall": "",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
