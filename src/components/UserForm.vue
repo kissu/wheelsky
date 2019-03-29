@@ -147,7 +147,6 @@
     </div>-->
 
     <button
-      @click.prevent="submitForm"
       type="submit"
       class="bg-purple mt-3 hover:bg-purple-dark text-white font-bold py-2 px-4 rounded-full"
     >Finir ma dégustation</button>
