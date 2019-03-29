@@ -10,13 +10,23 @@ export default {
   props: {
     highlightedFlavor: {
       type: String,
-      default: "Error on the highlighted flavor...",
+      default: "Erreur sur le parfum choisi !",
+      required: true
+    },
+    depthTier: {
+      type: Number,
+      default: 1,
       required: true
     }
   },
   methods: {
     digFlavor() {
-      this.$emit("dig-flavor", this.highlightedFlavor);
+      if (this.depthTier == 3) {
+        console.log("We have a chosen flavor !");
+        this.$emit("reset-depth", this.highlightedFlavor);
+      } else {
+        this.$emit("dig-flavor", this.highlightedFlavor);
+      }
     }
   }
 };
