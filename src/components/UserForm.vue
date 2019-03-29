@@ -1,5 +1,5 @@
 <template>
-  <form name="degustation" method="POST" data-netlify="true" class="w-full max-w-md center">
+  <form name="degustation" method="POST" netlify class="w-full max-w-md center">
     <div class="flex flex-wrap -mx-3 mb-5 mt-4">
       <div class="w-full md:w-1/2 px-3 mb-5 md:mb-0">
         <label
