@@ -13,9 +13,11 @@
       <flavor-details
         class="details-block"
         :highlightedFlavor="highlightedFlavor"
+        :depthTier="depthTier"
         @dig-flavor="flavorIsChosen"
+        @reset-depth="selectFlavor"
       ></flavor-details>
-      <chosen-flavors></chosen-flavors>
+      <chosen-flavors :selectedFlavors="selectedFlavors"></chosen-flavors>
     </div>
   </div>
 </template>
@@ -102,7 +104,7 @@ export default {
                     }
                   ]
                 },
-                { name: "b2" }
+                { name: "b2", children: [] }
               ]
             },
             {
@@ -122,7 +124,7 @@ export default {
         }
       ],
       highlightedFlavor: undefined,
-      selectedFlavors: ["Aucun parfum choisi"],
+      selectedFlavors: [],
       previouslySelectedFlavor: undefined,
       depthTier: 1,
       mounted: true,
@@ -143,31 +145,43 @@ export default {
     updateHighlightedFlavor(e) {
       this.highlightedFlavor = e.name;
     },
+    selectFlavor(e) {
+      this.selectedFlavors.push(e);
+      this.resetWheel();
+    },
     flavorIsChosen(e) {
       this.activeFlavorArray = [];
+      let tempArray = [];
       this.depthTier += 1;
       if (this.depthTier == 2) {
         let elementsTier2 = this.all[0].children.find(el => el.name == e)
           .children;
         for (let i = 0; i < elementsTier2.length; i++) {
-          this.activeFlavorArray.push(elementsTier2[i]);
+          console.log(elementsTier2[i]);
+          tempArray.push(elementsTier2[i]);
+          //!todo need to filter the N+1 to avoid printing parents w/ no children...
         }
-        if (this.activeFlavorArray.length == 1) {
-          this.activeFlavorArray.push(this.activeFlavorArray[0]);
-        }
+        console.log(elementsTier2);
         this.previouslySelectedFlavor = e;
       } else if (this.depthTier == 3) {
-        // does not refetch the selected flavor....nextTick needed again
         let elementsTier2 = this.all[0].children.find(
           el => el.name == this.previouslySelectedFlavor
         ).children;
         let elementsTier3 = elementsTier2.find(el2 => el2.name == e).children;
         for (let i = 0; i < elementsTier3.length; i++) {
-          this.activeFlavorArray.push(elementsTier3[i]);
+          tempArray.push(elementsTier3[i]);
         }
-        if (this.activeFlavorArray.length == 1) {
-          this.activeFlavorArray.push(this.activeFlavorArray[0]);
-        }
+      }
+      tempArray = tempArray.filter(
+        x => this.selectedFlavors.indexOf(x.name) < 0
+      );
+      this.activeFlavorArray = tempArray;
+      if (this.activeFlavorArray.length == 1) {
+        this.activeFlavorArray.push(this.activeFlavorArray[0]);
+      }
+      if (this.activeFlavorArray.length == 0) {
+        this.resetWheel();
+        //!todo OMFG, what an MLG pro. kill me.
       }
       this.$refs.wheel.checkFlavor(Draggable.get("#wheel"));
     },

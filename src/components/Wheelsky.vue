@@ -55,7 +55,8 @@
         stroke="#f2d024"
         :stroke-width="backButton / 20"
         stroke-linecap="round"
-        stroke-linejoin="round"
+        stroke-linejoin="round
+"
         data-clickable="true"
         :points="`${backButton * 1.6},${backButton / 2} ${backButton * 1.3},${backButton} ${backButton * 1.6},${backButton * 1.5}`"
       ></polyline>
@@ -86,7 +87,6 @@ export default {
     if (this.availableFlavors.length == 1) {
       console.log("we should GSAP lock the rotation here !");
     } else {
-      console.log("it's ok");
     }
     const vueInstance = this;
     Draggable.create("#wheel", {
@@ -108,7 +108,7 @@ export default {
   },
   watch: {
     availableFlavors(newValue, oldValue) {
-      console.log("changed");
+      // console.log("Update chosen flavor after a depth dive");
       this.checkFlavor(Draggable.get("#wheel"));
     }
   },
@@ -116,9 +116,6 @@ export default {
   methods: {
     backButtonClick() {
       this.$emit("reset-wheel");
-    },
-    test() {
-      console.log("test");
     },
     drawCirclePath(alpha, beta) {
       // alpha is start angle, beta is end of the circle arc, both in degrees
@@ -181,11 +178,11 @@ export default {
           this.availableFlavors.slice(flavorIndex)[0]
         );
       }
-      console.log(
-        `The chosen flavor is ${
-          this.availableFlavors.slice(flavorIndex)[0].name
-        }`
-      );
+      // console.log(
+      //   `The chosen flavor is ${
+      //     this.availableFlavors.slice(flavorIndex)[0].name
+      //   }`
+      // );
       return flavorIndex;
     }
   },
