@@ -1,7 +1,7 @@
 <template>
   <form
     name="degustation"
-    action="/"
+    action="/merci.html"
     method="post"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
