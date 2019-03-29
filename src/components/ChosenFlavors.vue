@@ -1,7 +1,6 @@
 <template>
   <div class="chosen-flavors">
     <p>Choosen flavors below</p>
-    <p>data level depth:</p>
     <p>Cool list of flavors</p>
     <br>
     <!-- <button class="btn btn-yellow">proceed further button !</button> -->

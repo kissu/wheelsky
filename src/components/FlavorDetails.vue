@@ -1,17 +1,22 @@
 <template>
   <div class="details">
-    <p>{{ highlighted }}</p>
-    <button class="btn btn-yellow">Choose me senpai button !</button>
+    <p>{{ highlightedFlavor }}</p>
+    <button class="btn btn-yellow" @click="digFlavor">Choose me senpai button !</button>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    highlighted: {
+    highlightedFlavor: {
       type: String,
       default: "Error on the highlighted flavor...",
       required: true
+    }
+  },
+  methods: {
+    digFlavor() {
+      this.$emit("dig-flavor", this.highlightedFlavor);
     }
   }
 };

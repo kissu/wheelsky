@@ -12,7 +12,7 @@
         v-for="(flavor, index) in availableFlavors"
         :key="flavor.id"
         :d="drawCirclePath(degrePerArc * index, degrePerArc * (index + 1))"
-        :fill="flavor.color"
+        fill="grey"
       ></path>
       <g v-for="(flavor, index) in availableFlavors" :key="flavor.id">
         <path
@@ -106,10 +106,19 @@ export default {
       this.checkFlavor(Draggable.get("#wheel"));
     });
   },
+  watch: {
+    availableFlavors(newValue, oldValue) {
+      console.log("changed");
+      this.checkFlavor(Draggable.get("#wheel"));
+    }
+  },
   //todo need to export that somewhere, too messy atm
   methods: {
     backButtonClick() {
-      console.log("clicked");
+      this.$emit("reset-wheel");
+    },
+    test() {
+      console.log("test");
     },
     drawCirclePath(alpha, beta) {
       // alpha is start angle, beta is end of the circle arc, both in degrees
