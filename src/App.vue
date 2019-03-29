@@ -1,22 +1,27 @@
 <template>
-  <div class="main-content">
-    <wheelsky
-      class="wheel-block"
-      @update-flavor="updateHighlightedFlavor"
-      @reset-wheel="resetWheel"
-      :highlightedFlavor="highlightedFlavor"
-      :availableFlavors="activeFlavorArray"
-      ref="wheel"
-    ></wheelsky>
-    <div class="right-aside-block">
-      <flavor-details
-        class="details-block"
+  <div>
+    <div v-if="firstPhase" class="main-content">
+      <wheelsky
+        class="wheel-block"
+        @update-flavor="updateHighlightedFlavor"
+        @reset-wheel="resetWheel"
         :highlightedFlavor="highlightedFlavor"
-        :depthTier="depthTier"
-        @dig-flavor="flavorIsChosen"
-        @reset-depth="selectFlavor"
-      ></flavor-details>
-      <chosen-flavors :selectedFlavors="selectedFlavors"></chosen-flavors>
+        :availableFlavors="activeFlavorArray"
+        ref="wheel"
+      ></wheelsky>
+      <div class="right-aside-block">
+        <flavor-details
+          class="details-block"
+          :highlightedFlavor="highlightedFlavor"
+          :depthTier="depthTier"
+          @dig-flavor="flavorIsChosen"
+          @reset-depth="selectFlavor"
+        ></flavor-details>
+        <chosen-flavors :selectedFlavors="selectedFlavors"></chosen-flavors>
+      </div>
+    </div>
+    <div v-if="!firstPhase">
+      <user-form></user-form>
     </div>
   </div>
 </template>
@@ -27,17 +32,15 @@ import Wheelsky from "./components/Wheelsky.vue";
 import FlavorDetails from "./components/FlavorDetails.vue";
 import ChosenFlavors from "./components/ChosenFlavors.vue";
 import UserForm from "./components/UserForm.vue";
-
 import whiskyFlavors from "./data/whiskyFlavors.json";
-import whiskyOrigin from "./data/whiskyOrigin.json";
-import whiskyType from "./data/whiskyType.json";
 
 export default {
   name: "app",
   components: {
     Wheelsky,
     FlavorDetails,
-    ChosenFlavors
+    ChosenFlavors,
+    UserForm
   },
   data() {
     return {
@@ -68,6 +71,7 @@ export default {
       selectedFlavors: [],
       previouslySelectedFlavor: undefined,
       depthTier: 1,
+      firstPhase: false,
       activeFlavorArray: [
         {
           name: "Doux"
@@ -110,7 +114,7 @@ export default {
   },
   mounted() {
     window.onbeforeunload = function() {
-      return "Êtes-vous sûr de vouloir recharger la page ?";
+      // return "Êtes-vous sûr de vouloir recharger la page ?";
     };
   },
   methods: {

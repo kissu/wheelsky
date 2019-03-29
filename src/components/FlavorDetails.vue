@@ -1,7 +1,7 @@
 <template>
   <div class="details">
     <p>{{ highlightedFlavor }}</p>
-    <button class="btn btn-yellow" @click="digFlavor">Choisir cette saveur</button>
+    <button class="btn btn-yellow" @click="digFlavor">{{ choisirSaveur }}</button>
   </div>
 </template>
 
@@ -26,6 +26,15 @@ export default {
         this.$emit("reset-depth", this.highlightedFlavor);
       } else {
         this.$emit("dig-flavor", this.highlightedFlavor);
+      }
+    }
+  },
+  computed: {
+    choisirSaveur() {
+      if (this.depthTier < 3) {
+        return "Suivant";
+      } else {
+        return "Choisir cette saveur";
       }
     }
   }
