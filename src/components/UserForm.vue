@@ -7,7 +7,7 @@
     class="w-full max-w-md center"
   >
     <!-- action="/merci.html" -->
-    <input type="hidden" name="form-name" value="degustation">
+    <input type="hidden" value="degustation">
     <div class="flex flex-wrap -mx-3 mb-5 mt-4">
       <div class="w-full md:w-1/2 px-3 mb-5 md:mb-0">
         <label
